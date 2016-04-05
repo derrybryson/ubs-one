@@ -61,44 +61,73 @@ require_once("dynamic-css.php");
 ?>
 
 <div class="ubs-one-header">
-<?php if($header_type == "standard") { ?>
-	<!-- Static navbar -->
-	<div class="container header-style">
-		<nav class="navbar navbar-default header-style">
-			<div class="container-fluid header-background">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
+<?php if($header_fixed): ?>
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-default navbar-fixed-top header-style header-background" id="navbar">
+    <div class="ubs-one-header-primary-bg">
+		<div class="container ubs-one-header-primary">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-primary" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
 				<div class="navbar-brand">
 				  <a class="navbar-brand" href="<?php get_site_url(); ?>"><?php echo $brand; ?></a>
 				</div>
-				</div>
+			</div>
 				<?php 
-					wp_nav_menu( array(
-									'menu'              => 'primary',
-									'theme_location'    => 'primary',
-									'depth'             => 2,
-									'container'         => 'div',
-									'container_class'   => 'collapse navbar-collapse',
-									'container_id'      => 'navbar-collapse',
-									'menu_class'        => 'nav navbar-nav navbar-right',
-									'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-									'walker'            => new wp_bootstrap_navwalker())
-							);
+          if(has_nav_menu('primary'))
+          {
+            wp_nav_menu( array(
+                    'menu'              => 'primary',
+                    'theme_location'    => 'primary',
+                    'depth'             => 2,
+                    'container'         => 'div',
+                    'container_class'   => 'collapse navbar-collapse',
+                    'container_id'      => 'navbar-primary',
+                    'menu_class'        => 'nav navbar-nav navbar-right',
+                    'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                    'walker'            => new wp_bootstrap_navwalker())
+                );
+          }
 				?>
-			</div><!--/.container-fluid -->
-		</nav>
-	</div>
-<?php } else if($header_type == "static") { ?>	
+		</div>
+    </div>
+    <?php if(has_nav_menu('secondary')): ?>
+    <div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-secondary" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+      </div><!-- navbar-header -->
+      <?php
+      wp_nav_menu( array(
+              'menu'              => 'secondary',
+              'theme_location'    => 'secondary',
+              'depth'             => 2,
+              'container'         => 'div',
+              'container_class'   => 'collapse navbar-collapse',
+              'container_id'      => 'navbar-secondary',
+              'menu_class'        => 'nav navbar-nav',
+              'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+              'walker'            => new wp_bootstrap_navwalker())
+          );
+      ?>
+    </div><!-- container -->
+    <?php endif; ?>
+	</nav>
+<?php else: ?>	
 	<!-- Static navbar -->
 	<nav class="navbar navbar-default navbar-static-top header-style header-background" id="navbar">
-		<div class="container">
+    <div class="ubs-one-header-primary-bg">
+		<div class="container ubs-one-header-primary">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-primary" aria-expanded="false" aria-controls="navbar">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -109,51 +138,50 @@ require_once("dynamic-css.php");
 				</div>
 			</div>
 				<?php 
-					wp_nav_menu( array(
-									'menu'              => 'primary',
-									'theme_location'    => 'primary',
-									'depth'             => 2,
-									'container'         => 'div',
-									'container_class'   => 'collapse navbar-collapse',
-									'container_id'      => 'navbar-collapse',
-									'menu_class'        => 'nav navbar-nav navbar-right',
-									'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-									'walker'            => new wp_bootstrap_navwalker())
-							);
+          if(has_nav_menu('primary'))
+          {
+            wp_nav_menu( array(
+                    'menu'              => 'primary',
+                    'theme_location'    => 'primary',
+                    'depth'             => 2,
+                    'container'         => 'div',
+                    'container_class'   => 'collapse navbar-collapse',
+                    'container_id'      => 'navbar-primary',
+                    'menu_class'        => 'nav navbar-nav navbar-right',
+                    'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                    'walker'            => new wp_bootstrap_navwalker())
+                );
+          }
 				?>
 		</div>
-	</nav>
-<?php } else if($header_type == "fixed") { ?>
-	<!-- Static navbar -->
-	<nav class="navbar navbar-default navbar-fixed-top header-style header-background" id="navbar">
-		<div class="container">
+    </div>
+    <?php if(has_nav_menu('secondary')): ?>
+    <div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-secondary" aria-expanded="false" aria-controls="navbar">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<div class="navbar-brand">
-				  <a class="navbar-brand" href="<?php get_site_url(); ?>"><?php echo $brand; ?></a>
-				</div>
-			</div>
-				<?php 
-					wp_nav_menu( array(
-									'menu'              => 'primary',
-									'theme_location'    => 'primary',
-									'depth'             => 2,
-									'container'         => 'div',
-									'container_class'   => 'collapse navbar-collapse',
-									'container_id'      => 'navbar-collapse',
-									'menu_class'        => 'nav navbar-nav navbar-right',
-									'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-									'walker'            => new wp_bootstrap_navwalker())
-							);
-				?>
-		</div>
+      </div><!-- navbar-header -->
+      <?php
+      wp_nav_menu( array(
+              'menu'              => 'secondary',
+              'theme_location'    => 'secondary',
+              'depth'             => 2,
+              'container'         => 'div',
+              'container_class'   => 'collapse navbar-collapse',
+              'container_id'      => 'navbar-secondary',
+              'menu_class'        => 'nav navbar-nav',
+              'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+              'walker'            => new wp_bootstrap_navwalker())
+          );
+      ?>
+    </div><!-- container -->
+    <?php endif; ?>
 	</nav>
-<?php } ?>	
+<?php endif; ?>
 </div>
 <!--<div style="height: 20px">
 </div> -->

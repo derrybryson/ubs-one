@@ -7,12 +7,15 @@ $text_family = ubs_one_get_theme_mod(UBS_ONE_TEXT_FAMILY);
 $text_size = intval(ubs_one_get_theme_mod(UBS_ONE_TEXT_SIZE));
 $custom_css = ubs_one_get_theme_mod(UBS_ONE_CUSTOM_CSS);
 	
-$header_type = ubs_one_get_theme_mod(UBS_ONE_HEADER_TYPE);
+$header_fixed = ubs_one_get_theme_mod(UBS_ONE_HEADER_FIXED);
 $header_border = ubs_one_get_theme_mod(UBS_ONE_HEADER_BORDER);
 $header_border_color = ubs_one_get_theme_mod(UBS_ONE_HEADER_BORDER_COLOR);
 $header_height = intval(ubs_one_get_theme_mod(UBS_ONE_HEADER_HEIGHT));
+$header_menu_height = intval(ubs_one_get_theme_mod(UBS_ONE_HEADER_MENU_HEIGHT));
 $header_bg = ubs_one_get_theme_mod(UBS_ONE_HEADER_BG);
 $header_fg = ubs_one_get_theme_mod(UBS_ONE_HEADER_FG);
+$header_bg_image = ubs_one_get_theme_mod(UBS_ONE_HEADER_BG_IMAGE);
+$header_bg_image_fixed = ubs_one_get_theme_mod(UBS_ONE_HEADER_BG_IMAGE_FIXED);
 $header_hover_fg = ubs_one_get_theme_mod(UBS_ONE_HEADER_HOVER_FG);
 $header_hover_bg = ubs_one_get_theme_mod(UBS_ONE_HEADER_HOVER_BG);
 $header_active_fg = ubs_one_get_theme_mod(UBS_ONE_HEADER_ACTIVE_FG);
@@ -64,6 +67,7 @@ $sidebar_widget_border_color = ubs_one_get_theme_mod(UBS_ONE_SIDEBAR_WIDGET_BORD
 	
 body
 {
+  min-height: 2000px; 
 	<?php if($text_family != '') { ?>
   font-family: <?php echo $text_family; ?>;
 	<?php } ?>
@@ -78,21 +82,52 @@ body
   <?php } ?>
 }
 
-<?php if($header_type == "standard") { ?>
+.ubs-one-header-primary
+{
+  height: <?php echo $header_height - (has_nav_menu('secondary') ? $header_menu_height : 0); ?>px;
+}
+  
+.ubs-one-header-primary-bg
+{
+  <?php if($header_bg_image != '') { ?>
+  background-image: url(<?php echo $header_bg_image; ?>);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left top;
+  background-attachment: <?php echo $header_bg_image_fixed ? "fixed" : "scroll"; ?>;
+  <?php } ?>
+}
+  
+.ubs-one-header-secondary
+{
+    
+}
+  
+<?php if($header_fixed): ?>
 
 body 
 {
-  padding-top: 20px;
-  padding-bottom: 20px;
+/*  min-height: 2000px; */
+  <?php if(is_admin_bar_showing()) { ?>
+  padding-top: <?php printf("%dpx", $header_height + 32); ?>;
+  <?php } else { ?>
+  padding-top: <?php printf("%dpx", $header_height); ?>;
+  <?php } ?>
 }
 
-.ubs-one-header .navbar 
+.ubs-one-header .navbar-fixed-top 
 {
   min-height: <?php echo $header_height; ?>px;
-/*  margin-bottom: 20px; */
 }
 
-<?php } else if($header_type == "static") { ?>
+<?php if(is_admin_bar_showing()): ?>
+.ubs-one-header .navbar
+{
+  margin-top: 32px;
+}
+<?php endif; ?>
+
+<?php else: ?>
 
 body 
 {
@@ -102,34 +137,9 @@ body
 .ubs-one-header .navbar-static-top 
 {
   min-height: <?php echo $header_height; ?>px;
-  margin-bottom: 19px;
+/*  margin-bottom: 19px;*/
 }
-
-<?php } else if($header_type == "fixed") { ?>
-
-body 
-{
-/*  min-height: 2000px; */
-  <?php if(is_admin_bar_showing()) { ?>
-  padding-top: <?php printf("%dpx", $header_height); ?>;
-  <?php } else { ?>
-  padding-top: <?php printf("%dpx", $header_height); ?>;
-  <?php } ?>
-}
-
-<?php if(is_admin_bar_showing()) { ?>
-.ubs-one-header .navbar
-{
-  margin-top: 32px;
-}
-<?php } ?>
-
-.ubs-one-header .navbar-fixed-top 
-{
-  min-height: <?php echo $header_height; ?>px;
-}
-
-<?php } ?>
+<?php endif; ?>
 	
 .ubs-one-header
 {
@@ -138,7 +148,7 @@ body
 
 .ubs-one-header div.navbar-brand
 {
-  min-height: <?php echo $header_height; ?>px;
+/*  min-height: <?php echo $header_height; ?>px;*/
   display: table-cell;
   vertical-align: middle;
   padding: 0px;
@@ -156,7 +166,7 @@ body
 
 .ubs-one-header .navbar-nav 
 {
-  min-height: <?php echo $header_height; ?>px;
+/*  min-height: <?php echo $header_height; ?>px; */
 }
 
 .ubs-one-header .navbar-nav > li > a 
@@ -520,6 +530,11 @@ body
 .footer .widget ul li:hover {
 	position: relative;
 	left: 1px;
+}
+  
+.footer .widget ul li a:hover
+{
+  color: <?php echo $footer_hover; ?>;
 }
   
 .footer a

@@ -26,10 +26,13 @@ function ubs_one_customize_register($wp_customize)
 	$wp_customize->add_setting(UBS_ONE_LAYOUT_TYPE, array('default' => ubs_one_def(UBS_ONE_LAYOUT_TYPE), 'transport' => 'refresh'));
   $wp_customize->add_setting(UBS_ONE_CUSTOM_CSS, array('default' => ubs_one_def(UBS_ONE_CUSTOM_CSS), 'transport' => 'refresh'));
 
-	$wp_customize->add_setting(UBS_ONE_HEADER_TYPE, array('default' => ubs_one_def(UBS_ONE_HEADER_TYPE), 'transport' => 'refresh'));
+	$wp_customize->add_setting(UBS_ONE_HEADER_FIXED, array('default' => ubs_one_def(UBS_ONE_HEADER_FIXED), 'transport' => 'refresh'));
 	$wp_customize->add_setting(UBS_ONE_HEADER_HEIGHT, array('default' => ubs_one_def(UBS_ONE_HEADER_HEIGHT), 'transport' => 'refresh'));
+	$wp_customize->add_setting(UBS_ONE_HEADER_MENU_HEIGHT, array('default' => ubs_one_def(UBS_ONE_HEADER_MENU_HEIGHT), 'transport' => 'refresh'));
 	$wp_customize->add_setting(UBS_ONE_HEADER_BORDER, array('default' => ubs_one_def(UBS_ONE_HEADER_BORDER), 'transport' => 'refresh'));
 	$wp_customize->add_setting(UBS_ONE_HEADER_BORDER_COLOR, array('default'   => ubs_one_def(UBS_ONE_HEADER_BORDER_COLOR), 'transport' => 'refresh'));
+	$wp_customize->add_setting(UBS_ONE_HEADER_BG_IMAGE, array('default' => ubs_one_def(UBS_ONE_HEADER_BG_IMAGE), 'transport' => 'refresh'));
+	$wp_customize->add_setting(UBS_ONE_HEADER_BG_IMAGE_FIXED, array('default' => ubs_one_def(UBS_ONE_HEADER_BG_IMAGE_FIXED), 'transport' => 'refresh'));
 	$wp_customize->add_setting(UBS_ONE_HEADER_BG, array('default' => ubs_one_def(UBS_ONE_HEADER_BG), 'transport' => 'refresh'));
 	$wp_customize->add_setting(UBS_ONE_HEADER_FG, array('default' => ubs_one_def(UBS_ONE_HEADER_FG), 'transport' => 'refresh'));
 	$wp_customize->add_setting(UBS_ONE_HEADER_HOVER_FG, array('default' => ubs_one_def(UBS_ONE_HEADER_HOVER_FG), 'transport' => 'refresh'));
@@ -142,13 +145,12 @@ function ubs_one_customize_register($wp_customize)
 		"title" => __("Header", "ubs_one"),
 		"priority" => 30,
 	));
-  $wp_customize->add_control(UBS_ONE_HEADER_TYPE, array(		
-		'label'    => __('Header Type', 'ubs_one'),
-		'section'  => 'header',
-		'settings' => UBS_ONE_HEADER_TYPE,
-		'type'     => 'select',
-		'choices'  => ubs_one_choices(UBS_ONE_HEADER_TYPE),
-	));
+	$wp_customize->add_control(UBS_ONE_HEADER_FIXED, array(
+    'type'        => 'checkbox',
+    'section'     => 'header',
+		'settings' => UBS_ONE_HEADER_FIXED,
+    'label'       => __('Fixed to Top', 'ubs_one'),
+  ));
 	$wp_customize->add_control(UBS_ONE_HEADER_LOGO_TEXT_SIZE, array(
     'type'        => 'number',
     'section'     => 'header',
@@ -179,7 +181,13 @@ function ubs_one_customize_register($wp_customize)
     'type'        => 'number',
     'section'     => 'header',
 		'settings' => UBS_ONE_HEADER_HEIGHT,
-    'label'       => 'Height',
+    'label'       => 'Header Height',
+  ));
+	$wp_customize->add_control(UBS_ONE_HEADER_MENU_HEIGHT, array(
+    'type'        => 'number',
+    'section'     => 'header',
+		'settings' => UBS_ONE_HEADER_MENU_HEIGHT,
+    'label'       => 'Menu Height',
   ));
 	$wp_customize->add_control(UBS_ONE_HEADER_BORDER, array(
     'type'        => 'checkbox',
@@ -202,6 +210,17 @@ function ubs_one_customize_register($wp_customize)
         'section'  => 'header',
         'settings' => UBS_ONE_HEADER_BG,
   )));
+	$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, UBS_ONE_HEADER_BG_IMAGE, array(
+    'label'      => __( 'Background Image', 'ubs_one' ),
+    'section'    => 'header',
+    'settings'   => UBS_ONE_HEADER_BG_IMAGE,
+  )));
+	$wp_customize->add_control(UBS_ONE_HEADER_BG_IMAGE_FIXED, array(
+    'type'        => 'checkbox',
+    'section'     => 'header',
+		'settings' => UBS_ONE_HEADER_BG_IMAGE_FIXED,
+    'label'       => __('Background Image Fixed', 'ubs_one'),
+  ));
 	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, UBS_ONE_HEADER_HOVER_FG, array(
         'label'    => __( 'Menu Hover Text Color', 'ubs_one' ),
         'section'  => 'header',

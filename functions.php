@@ -29,12 +29,15 @@ function ubs_one_endswith($haystack, $needle, $case=true)
 
 /** Theme settings
  */
-define('UBS_ONE_HEADER_TYPE', 'header_type');
+define('UBS_ONE_HEADER_FIXED', 'header_fixed');
 define('UBS_ONE_HEADER_BORDER', 'header_border');
 define('UBS_ONE_HEADER_BORDER_COLOR', 'header_border_color');
 define('UBS_ONE_HEADER_HEIGHT', 'header_height');
+define('UBS_ONE_HEADER_MENU_HEIGHT', 'header_menu_height');
 define('UBS_ONE_HEADER_BG', 'header_bg');
 define('UBS_ONE_HEADER_FG', 'header_fg');
+define('UBS_ONE_HEADER_BG_IMAGE', 'header_bg_image');
+define('UBS_ONE_HEADER_BG_IMAGE_FIXED', 'header_bg_image_fixed');
 define('UBS_ONE_HEADER_HOVER_FG', 'header_hover_fg');
 define('UBS_ONE_HEADER_HOVER_BG', 'header_hover_bg');
 define('UBS_ONE_HEADER_ACTIVE_FG', 'header_active_fg');
@@ -103,10 +106,13 @@ define('UBS_ONE_LAYOUT_TYPE_3COL', '3col');
 /** Theme defaults
  */
 $ubs_one_defaults = array(
-	UBS_ONE_HEADER_TYPE => UBS_ONE_HEADER_TYPE_STANDARD,
+	UBS_ONE_HEADER_FIXED => false,
 	UBS_ONE_HEADER_BORDER => true,
 	UBS_ONE_HEADER_BORDER_COLOR => "#cdbfe3",
 	UBS_ONE_HEADER_HEIGHT => '50',
+  UBS_ONE_HEADER_MENU_HEIGHT => '50',
+  UBS_ONE_HEADER_BG_IMAGE => '',
+  UBS_ONE_HEADER_BG_IMAGE_FIXED => true,
 	UBS_ONE_HEADER_BG => '#6f5499',
 	UBS_ONE_HEADER_FG => '#cdbfe3',
 	UBS_ONE_HEADER_HOVER_FG => '#6f5499',
@@ -238,7 +244,8 @@ function ubs_one_setup() {
 
 	
 	register_nav_menus(array(
-		'primary' => __('Primary Menu', 'ubs-one')
+		'primary' => __('Primary Menu', 'ubs-one'),
+    'secondary' => __('Secondary Menu', 'ubs-one')
 	));
 
 	/*
