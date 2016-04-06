@@ -38,11 +38,14 @@ define('UBS_ONE_HEADER_BG', 'header_bg');
 define('UBS_ONE_HEADER_FG', 'header_fg');
 define('UBS_ONE_HEADER_BG_IMAGE', 'header_bg_image');
 define('UBS_ONE_HEADER_BG_IMAGE_FIXED', 'header_bg_image_fixed');
+define('UBS_ONE_HEADER_BG_IMAGE_OFFSET', 'header_bg_image_offset');
+define('UBS_ONE_HEADER_BG_REPEAT', 'header_bg_image_repeat');
 define('UBS_ONE_HEADER_HOVER_FG', 'header_hover_fg');
 define('UBS_ONE_HEADER_HOVER_BG', 'header_hover_bg');
 define('UBS_ONE_HEADER_ACTIVE_FG', 'header_active_fg');
 define('UBS_ONE_HEADER_ACTIVE_BG', 'header_active_bg');
 define('UBS_ONE_HEADER_LOGO_TEXT_SIZE', 'header_logo_text_size');
+define('UBS_ONE_HEADER_LOGO_TEXT_SIZE_MOBILE', 'header_logo_text_size_mobile');
 define('UBS_ONE_HEADER_LOGO_TEXT_FAMILY', 'header_logo_text_family');
 define('UBS_ONE_HEADER_LOGO_TEXT_WEIGHT', 'header_logo_text_weight');
 define('UBS_ONE_HEADER_LOGO_TEXT_STYLE', 'header_logo_text_style');
@@ -54,12 +57,60 @@ define('UBS_ONE_FOOTER_LINK', 'footer_link');
 define('UBS_ONE_FOOTER_HOVER', 'footer_hover');
 define('UBS_ONE_FOOTER_TEXT', 'footer_text');
 
+define('UBS_ONE_BLOG_TITLE', 'blog_title');
+define('UBS_ONE_BLOG_TITLE_IMAGE', 'blog_title_image');
+define('UBS_ONE_BLOG_TITLE_IMAGE_FIXED', 'blog_title_image_fixed');
+define('UBS_ONE_BLOG_TITLE_IMAGE_OFFSET', 'blog_title_image_offset');
+define('UBS_ONE_BLOG_TITLE_IMAGE_REPEAT', 'blog_title_image_repeat');
+define('UBS_ONE_BLOG_TITLE_HEIGHT', 'blog_title_height');
+define('UBS_ONE_BLOG_TITLE_TEXT_SIZE', 'blog_title_font_size');
+define('UBS_ONE_BLOG_TITLE_TEXT_SIZE_MOBILE', 'blog_title_font_size_mobile');
+define('UBS_ONE_BLOG_TITLE_TEXT_FAMILY', 'blog_title_text_family');
+define('UBS_ONE_BLOG_TITLE_TEXT_WEIGHT', 'blog_title_text_weight');
+define('UBS_ONE_BLOG_TITLE_TEXT_STYLE', 'blog_title_text_style');
+define('UBS_ONE_BLOG_TITLE_TEXT_HPOS', 'blog_title_text_hpos');
+define('UBS_ONE_BLOG_TITLE_TEXT_VPOS', 'blog_title_text_vpos');
+define('UBS_ONE_BLOG_TITLE_FG', 'blog_title_fg');
+define('UBS_ONE_BLOG_TITLE_BG', 'blog_title_bg');
+define('UBS_ONE_BLOG_TITLE_BG_TRAN', 'blog_title_bg_trans');
+
+define('UBS_ONE_ARCHIVE_TITLE_IMAGE', 'archive_title_image');
+define('UBS_ONE_ARCHIVE_TITLE_IMAGE_FIXED', 'archive_title_image_fixed');
+define('UBS_ONE_ARCHIVE_TITLE_IMAGE_OFFSET', 'archive_title_image_offset');
+define('UBS_ONE_ARCHIVE_TITLE_IMAGE_REPEAT', 'archive_title_image_repeat');
+define('UBS_ONE_ARCHIVE_TITLE_HEIGHT', 'archive_title_height');
+define('UBS_ONE_ARCHIVE_TITLE_TEXT_SIZE', 'archive_title_font_size');
+define('UBS_ONE_ARCHIVE_TITLE_TEXT_SIZE_MOBILE', 'archive_title_font_size_mobile');
+define('UBS_ONE_ARCHIVE_TITLE_TEXT_FAMILY', 'archive_title_text_family');
+define('UBS_ONE_ARCHIVE_TITLE_TEXT_WEIGHT', 'archive_title_text_weight');
+define('UBS_ONE_ARCHIVE_TITLE_TEXT_STYLE', 'archive_title_text_style');
+define('UBS_ONE_ARCHIVE_TITLE_TEXT_HPOS', 'archive_title_text_hpos');
+define('UBS_ONE_ARCHIVE_TITLE_TEXT_VPOS', 'archive_title_text_vpos');
+define('UBS_ONE_ARCHIVE_TITLE_FG', 'archive_title_fg');
+define('UBS_ONE_ARCHIVE_TITLE_BG', 'archive_title_bg');
+define('UBS_ONE_ARCHIVE_TITLE_BG_TRAN', 'archive_title_bg_trans');
+
 define('UBS_ONE_POST_FG', 'post_fg');
 define('UBS_ONE_POST_BG', 'post_bg');
 define('UBS_ONE_POST_LINK', 'post_link');
 define('UBS_ONE_POST_HOVER', 'post_hover');
 define('UBS_ONE_POST_BORDER', 'post_border');
 define('UBS_ONE_POST_BORDER_COLOR', 'post_border_color');
+define('UBS_ONE_POST_TITLE_IMAGE', 'post_title_image');
+define('UBS_ONE_POST_TITLE_IMAGE_FIXED', 'post_title_image_fixed');
+define('UBS_ONE_POST_TITLE_IMAGE_OFFSET', 'post_title_image_offset');
+define('UBS_ONE_POST_TITLE_IMAGE_REPEAT', 'post_title_image_repeat');
+define('UBS_ONE_POST_TITLE_HEIGHT', 'post_title_height');
+define('UBS_ONE_POST_TITLE_TEXT_SIZE', 'post_title_font_size');
+define('UBS_ONE_POST_TITLE_TEXT_SIZE_MOBILE', 'post_title_font_size_mobile');
+define('UBS_ONE_POST_TITLE_TEXT_FAMILY', 'post_title_text_family');
+define('UBS_ONE_POST_TITLE_TEXT_WEIGHT', 'post_title_text_weight');
+define('UBS_ONE_POST_TITLE_TEXT_STYLE', 'post_title_text_style');
+define('UBS_ONE_POST_TITLE_TEXT_HPOS', 'post_title_text_hpos');
+define('UBS_ONE_POST_TITLE_TEXT_VPOS', 'post_title_text_vpos');
+define('UBS_ONE_POST_TITLE_FG', 'post_title_fg');
+define('UBS_ONE_POST_TITLE_BG', 'post_title_bg');
+define('UBS_ONE_POST_TITLE_BG_TRAN', 'post_title_bg_trans');
 
 define('UBS_ONE_PAGE_FG', 'page_fg');
 define('UBS_ONE_PAGE_BG', 'page_bg');
@@ -67,11 +118,16 @@ define('UBS_ONE_PAGE_LINK', 'page_link');
 define('UBS_ONE_PAGE_HOVER', 'page_hover');
 define('UBS_ONE_PAGE_TITLE_IMAGE', 'page_title_image');
 define('UBS_ONE_PAGE_TITLE_IMAGE_FIXED', 'page_title_image_fixed');
+define('UBS_ONE_PAGE_TITLE_IMAGE_OFFSET', 'page_title_image_offset');
+define('UBS_ONE_PAGE_TITLE_IMAGE_REPEAT', 'page_title_image_repeat');
 define('UBS_ONE_PAGE_TITLE_HEIGHT', 'page_title_height');
 define('UBS_ONE_PAGE_TITLE_TEXT_SIZE', 'page_title_font_size');
+define('UBS_ONE_PAGE_TITLE_TEXT_SIZE_MOBILE', 'page_title_font_size_mobile');
 define('UBS_ONE_PAGE_TITLE_TEXT_FAMILY', 'page_title_text_family');
 define('UBS_ONE_PAGE_TITLE_TEXT_WEIGHT', 'page_title_text_weight');
 define('UBS_ONE_PAGE_TITLE_TEXT_STYLE', 'page_title_text_style');
+define('UBS_ONE_PAGE_TITLE_TEXT_HPOS', 'page_title_text_hpos');
+define('UBS_ONE_PAGE_TITLE_TEXT_VPOS', 'page_title_text_vpos');
 define('UBS_ONE_PAGE_TITLE_FG', 'page_title_fg');
 define('UBS_ONE_PAGE_TITLE_BG', 'page_title_bg');
 define('UBS_ONE_PAGE_TITLE_BG_TRAN', 'page_title_bg_trans');
@@ -103,6 +159,25 @@ define('UBS_ONE_LAYOUT_TYPE_2COLLEFT', '2colleft');
 define('UBS_ONE_LAYOUT_TYPE_2COLRIGHT', '2colright');
 define('UBS_ONE_LAYOUT_TYPE_3COL', '3col');
 
+define('UBS_ONE_REPEAT', 'repeat');
+define('UBS_ONE_REPEAT_NONE', 'no-repeat');
+define('UBS_ONE_REPEAT_X', 'repeat-x');
+define('UBS_ONE_REPEAT_Y', 'repeat-y');
+define('UBS_ONE_REPEAT_BOTH', 'repeat');
+
+define('UBS_ONE_HPOS', 'hpos');
+define('UBS_ONE_HPOS_LEFT', 'left');
+define('UBS_ONE_HPOS_CENTER', 'center');
+define('UBS_ONE_HPOS_RIGHT', 'right');
+
+define('UBS_ONE_VPOS', 'vpos');
+define('UBS_ONE_VPOS_TOP', 'top');
+define('UBS_ONE_VPOS_MIDDLE', 'middle');
+define('UBS_ONE_VPOS_BOTTOM', 'bottom');
+
+define('UBS_ONE_TEXT_WEIGHT', 'text-weight');
+define('UBS_ONE_TEXT_STYLE', 'text-style');
+
 /** Theme defaults
  */
 $ubs_one_defaults = array(
@@ -113,6 +188,8 @@ $ubs_one_defaults = array(
   UBS_ONE_HEADER_MENU_HEIGHT => '50',
   UBS_ONE_HEADER_BG_IMAGE => '',
   UBS_ONE_HEADER_BG_IMAGE_FIXED => true,
+  UBS_ONE_HEADER_BG_IMAGE_OFFSET => 0,
+  UBS_ONE_HEADER_BG_IMAGE_REPEAT => UBS_ONE_REPEAT_Y,
 	UBS_ONE_HEADER_BG => '#6f5499',
 	UBS_ONE_HEADER_FG => '#cdbfe3',
 	UBS_ONE_HEADER_HOVER_FG => '#6f5499',
@@ -120,6 +197,7 @@ $ubs_one_defaults = array(
 	UBS_ONE_HEADER_ACTIVE_FG => '#cdbfe3',
 	UBS_ONE_HEADER_ACTIVE_BG => '#533c70',
 	UBS_ONE_HEADER_LOGO_TEXT_SIZE => 28,
+  UBS_ONE_HEADER_LOGO_TEXT_SIZE_MOBILE => 14,
 	UBS_ONE_HEADER_LOGO_TEXT_FAMILY => 'sans-serif',
 	UBS_ONE_HEADER_LOGO_TEXT_WEIGHT => 'bold',
 	UBS_ONE_HEADER_LOGO_TEXT_STYLE => 'normal',
@@ -131,12 +209,60 @@ $ubs_one_defaults = array(
 	UBS_ONE_FOOTER_HOVER => '#ffffff',
   UBS_ONE_FOOTER_TEXT => 'UBS One Wordpress Theme by <a href="http://dbthemes.com">DB Themes</a>.',
 	
+  UBS_ONE_BLOG_TITLE => 'Blog',
+  UBS_ONE_BLOG_TITLE_IMAGE => '',
+  UBS_ONE_BLOG_TITLE_IMAGE_FIXED => true,
+  UBS_ONE_BLOG_TITLE_IMAGE_OFFSET => 0,
+  UBS_ONE_BLOG_TITLE_IMAGE_REPEAT => UBS_ONE_REPEAT_Y,
+  UBS_ONE_BLOG_TITLE_HEIGHT => '0',
+  UBS_ONE_BLOG_TITLE_TEXT_SIZE => 50,
+  UBS_ONE_BLOG_TITLE_TEXT_SIZE_MOBILE => 25,
+	UBS_ONE_BLOG_TITLE_TEXT_FAMILY => 'sans-serif',
+	UBS_ONE_BLOG_TITLE_TEXT_WEIGHT => 'bold',
+	UBS_ONE_BLOG_TITLE_TEXT_STYLE => 'normal',
+  UBS_ONE_BLOG_TITLE_TEXT_HPOS => UBS_ONE_HPOS_LEFT,
+  UBS_ONE_BLOG_TITLE_TEXT_VPOS => UBS_ONE_VPOS_MIDDLE,
+  UBS_ONE_BLOG_TITLE_FG => '#ffffff',
+  UBS_ONE_BLOG_TITLE_BG => '#000000',
+  UBS_ONE_BLOG_TITLE_BG_TRANS => false,
+	
+  UBS_ONE_ARCHIVE_TITLE_IMAGE => '',
+  UBS_ONE_ARCHIVE_TITLE_IMAGE_FIXED => true,
+  UBS_ONE_ARCHIVE_TITLE_IMAGE_OFFSET => 0,
+  UBS_ONE_ARCHIVE_TITLE_IMAGE_REPEAT => UBS_ONE_REPEAT_Y,
+  UBS_ONE_ARCHIVE_TITLE_HEIGHT => '0',
+  UBS_ONE_ARCHIVE_TITLE_TEXT_SIZE => 50,
+  UBS_ONE_ARCHIVE_TITLE_TEXT_SIZE_MOBILE => 25,
+	UBS_ONE_ARCHIVE_TITLE_TEXT_FAMILY => 'sans-serif',
+	UBS_ONE_ARCHIVE_TITLE_TEXT_WEIGHT => 'bold',
+	UBS_ONE_ARCHIVE_TITLE_TEXT_STYLE => 'normal',
+  UBS_ONE_ARCHIVE_TITLE_TEXT_HPOS => UBS_ONE_HPOS_LEFT,
+  UBS_ONE_ARCHIVE_TITLE_TEXT_VPOS => UBS_ONE_VPOS_MIDDLE,
+  UBS_ONE_ARCHIVE_TITLE_FG => '#ffffff',
+  UBS_ONE_ARCHIVE_TITLE_BG => '#000000',
+  UBS_ONE_ARCHIVE_TITLE_BG_TRANS => false,
+	
   UBS_ONE_POST_FG => '#000000',
   UBS_ONE_POST_BG => '#ffffff',
   UBS_ONE_POST_LINK => '#cdbfe3',
   UBS_ONE_POST_HOVER => '#6f5499',
   UBS_ONE_POST_BORDER => true,
   UBS_ONE_POST_BORDER_COLOR => '#d0d0d0',
+  UBS_ONE_POST_TITLE_IMAGE => '',
+  UBS_ONE_POST_TITLE_IMAGE_FIXED => true,
+  UBS_ONE_POST_TITLE_IMAGE_OFFSET => 0,
+  UBS_ONE_POST_TITLE_IMAGE_REPEAT => UBS_ONE_REPEAT_Y,
+  UBS_ONE_POST_TITLE_HEIGHT => '0',
+  UBS_ONE_POST_TITLE_TEXT_SIZE => 50,
+  UBS_ONE_POST_TITLE_TEXT_SIZE_MOBILE => 25,
+	UBS_ONE_POST_TITLE_TEXT_FAMILY => 'sans-serif',
+	UBS_ONE_POST_TITLE_TEXT_WEIGHT => 'bold',
+	UBS_ONE_POST_TITLE_TEXT_STYLE => 'normal',
+  UBS_ONE_POST_TITLE_TEXT_HPOS => UBS_ONE_HPOS_LEFT,
+  UBS_ONE_POST_TITLE_TEXT_VPOS => UBS_ONE_VPOS_MIDDLE,
+  UBS_ONE_POST_TITLE_FG => '#ffffff',
+  UBS_ONE_POST_TITLE_BG => '#000000',
+  UBS_ONE_POST_TITLE_BG_TRANS => false,
 	
   UBS_ONE_PAGE_FG => '#000000',
   UBS_ONE_PAGE_BG => '#ffffff',
@@ -146,11 +272,16 @@ $ubs_one_defaults = array(
   UBS_ONE_PAGE_BORDER_COLOR => '#d0d0d0',
   UBS_ONE_PAGE_TITLE_IMAGE => '',
   UBS_ONE_PAGE_TITLE_IMAGE_FIXED => true,
+  UBS_ONE_PAGE_TITLE_IMAGE_OFFSET => 0,
+  UBS_ONE_PAGE_TITLE_IMAGE_REPEAT => UBS_ONE_REPEAT_Y,
   UBS_ONE_PAGE_TITLE_HEIGHT => '0',
   UBS_ONE_PAGE_TITLE_TEXT_SIZE => 50,
+  UBS_ONE_PAGE_TITLE_TEXT_SIZE_MOBILE => 25,
 	UBS_ONE_PAGE_TITLE_TEXT_FAMILY => 'sans-serif',
 	UBS_ONE_PAGE_TITLE_TEXT_WEIGHT => 'bold',
 	UBS_ONE_PAGE_TITLE_TEXT_STYLE => 'normal',
+  UBS_ONE_PAGE_TITLE_TEXT_HPOS => UBS_ONE_HPOS_LEFT,
+  UBS_ONE_PAGE_TITLE_TEXT_VPOS => UBS_ONE_VPOS_MIDDLE,
   UBS_ONE_PAGE_TITLE_FG => '#ffffff',
   UBS_ONE_PAGE_TITLE_BG => '#000000',
   UBS_ONE_PAGE_TITLE_BG_TRANS => false,
@@ -178,11 +309,12 @@ $ubs_one_defaults = array(
  */
 $ubs_one_choices = array(
 	UBS_ONE_HEADER_TYPE => array(UBS_ONE_HEADER_TYPE_STANDARD => 'Standard', UBS_ONE_HEADER_TYPE_STATIC => 'Static', UBS_ONE_HEADER_TYPE_FIXED => 'Fixed'),
-	UBS_ONE_HEADER_LOGO_TEXT_WEIGHT => array('normal' => 'Normal', 'bold' => 'Bold', 'bolder' => 'Bolder', 'lighter' => 'Lighter'),
-	UBS_ONE_HEADER_LOGO_TEXT_STYLE => array('normal' => 'Normal', 'italic' => 'Italic', 'oblique' => 'Oblique'),
+	UBS_ONE_TEXT_WEIGHT => array('normal' => 'Normal', 'bold' => 'Bold', 'bolder' => 'Bolder', 'lighter' => 'Lighter'),
+	UBS_ONE_TEXT_STYLE => array('normal' => 'Normal', 'italic' => 'Italic', 'oblique' => 'Oblique'),
 	UBS_ONE_LAYOUT_TYPE => array(UBS_ONE_LAYOUT_TYPE_2COLLEFT => '2 Column, Left Sidebar', UBS_ONE_LAYOUT_TYPE_2COLRIGHT => '2 Column, Right Sidebar', UBS_ONE_LAYOUT_TYPE_3COL => '3 Column'),
-	UBS_ONE_PAGE_TITLE_TEXT_WEIGHT => array('normal' => 'Normal', 'bold' => 'Bold', 'bolder' => 'Bolder', 'lighter' => 'Lighter'),
-	UBS_ONE_PAGE_TITLE_TEXT_STYLE => array('normal' => 'Normal', 'italic' => 'Italic', 'oblique' => 'Oblique'),
+  UBS_ONE_REPEAT => array(UBS_ONE_REPEAT_NONE => 'No Repeat', UBS_ONE_REPEAT_X => 'Repeat X', UBS_ONE_REPEAT_Y => 'Repeat Y', UBS_ONE_REPEAT_BOTH => 'Repeat X & Y'),
+  UBS_ONE_HPOS => array(UBS_ONE_HPOS_LEFT => 'Left', UBS_ONE_HPOS_CENTER => 'Center', UBS_ONE_HPOS_RIGHT => 'Right'),
+  UBS_ONE_VPOS => array(UBS_ONE_VPOS_TOP => 'Top', UBS_ONE_VPOS_MIDDLE => 'Middle', UBS_ONE_VPOS_BOTTOM => 'Bottom'),
 );
 
 function ubs_one_def($key)

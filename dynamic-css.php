@@ -16,11 +16,14 @@ $header_bg = ubs_one_get_theme_mod(UBS_ONE_HEADER_BG);
 $header_fg = ubs_one_get_theme_mod(UBS_ONE_HEADER_FG);
 $header_bg_image = ubs_one_get_theme_mod(UBS_ONE_HEADER_BG_IMAGE);
 $header_bg_image_fixed = ubs_one_get_theme_mod(UBS_ONE_HEADER_BG_IMAGE_FIXED);
+$header_bg_image_offset = intval(ubs_one_get_theme_mod(UBS_ONE_HEADER_BG_IMAGE_OFFSET));
+$header_bg_image_repeat = ubs_one_get_theme_mod(UBS_ONE_HEADER_BG_IMAGE_REPEAT);
 $header_hover_fg = ubs_one_get_theme_mod(UBS_ONE_HEADER_HOVER_FG);
 $header_hover_bg = ubs_one_get_theme_mod(UBS_ONE_HEADER_HOVER_BG);
 $header_active_fg = ubs_one_get_theme_mod(UBS_ONE_HEADER_ACTIVE_FG);
 $header_active_bg = ubs_one_get_theme_mod(UBS_ONE_HEADER_ACTIVE_BG);
 $header_logo_text_size = intval(ubs_one_get_theme_mod(UBS_ONE_HEADER_LOGO_TEXT_SIZE));
+$header_logo_text_size_mobile = intval(ubs_one_get_theme_mod(UBS_ONE_HEADER_LOGO_TEXT_SIZE_MOBILE));
 $header_logo_text_family = ubs_one_get_theme_mod(UBS_ONE_HEADER_LOGO_TEXT_FAMILY);
 $header_logo_text_weight = ubs_one_get_theme_mod(UBS_ONE_HEADER_LOGO_TEXT_WEIGHT);
 $header_logo_text_style = ubs_one_get_theme_mod(UBS_ONE_HEADER_LOGO_TEXT_STYLE);
@@ -30,12 +33,59 @@ $footer_fg = ubs_one_get_theme_mod(UBS_ONE_FOOTER_FG);
 $footer_link = ubs_one_get_theme_mod(UBS_ONE_FOOTER_LINK);
 $footer_hover = ubs_one_get_theme_mod(UBS_ONE_FOOTER_HOVER);
 
+$blog_title_image = ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_IMAGE);
+$blog_title_image_fixed = ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_IMAGE_FIXED);
+$blog_title_image_offset = intval(ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_IMAGE_OFFSET));
+$blog_title_image_repeat = ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_IMAGE_REPEAT);
+$blog_title_height = intval(ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_HEIGHT));
+$blog_title_text_size = intval(ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_TEXT_SIZE));
+$blog_title_text_size_mobile = intval(ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_TEXT_SIZE_MOBILE));
+$blog_title_text_family = ubs_one_get_theme_mod(UBS_ONE_BLOG_TEXT_FAMILY);
+$blog_title_text_weight = ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_TEXT_WEIGHT);
+$blog_title_text_style = ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_TEXT_STYLE);
+$blog_title_text_hpos = ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_TEXT_HPOS);
+$blog_title_text_vpos = ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_TEXT_VPOS);
+$blog_title_fg = ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_FG);
+$blog_title_bg = ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_BG);
+$blog_title_bg_trans = ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_BG_TRANS);
+
+$archive_title_image = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_IMAGE);
+$archive_title_image_fixed = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_IMAGE_FIXED);
+$archive_title_image_offset = intval(ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_IMAGE_OFFSET));
+$archive_title_image_repeat = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_IMAGE_REPEAT);
+$archive_title_height = intval(ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_HEIGHT));
+$archive_title_text_size = intval(ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_TEXT_SIZE));
+$archive_title_text_size_mobile = intval(ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_TEXT_SIZE_MOBILE));
+$archive_title_text_family = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TEXT_FAMILY);
+$archive_title_text_weight = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_TEXT_WEIGHT);
+$archive_title_text_style = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_TEXT_STYLE);
+$archive_title_text_hpos = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_TEXT_HPOS);
+$archive_title_text_vpos = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_TEXT_VPOS);
+$archive_title_fg = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_FG);
+$archive_title_bg = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_BG);
+$archive_title_bg_trans = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_BG_TRANS);
+
 $post_fg = ubs_one_get_theme_mod(UBS_ONE_POST_FG);
 $post_bg = ubs_one_get_theme_mod(UBS_ONE_POST_BG);
 $post_link = ubs_one_get_theme_mod(UBS_ONE_POST_LINK);
 $post_hover = ubs_one_get_theme_mod(UBS_ONE_POST_HOVER);
 $post_border = ubs_one_get_theme_mod(UBS_ONE_POST_BORDER);
 $post_border_color = ubs_one_get_theme_mod(UBS_ONE_POST_BORDER_COLOR);
+$post_title_image = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_IMAGE);
+$post_title_image_fixed = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_IMAGE_FIXED);
+$post_title_image_offset = intval(ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_IMAGE_OFFSET));
+$post_title_image_repeat = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_IMAGE_REPEAT);
+$post_title_height = intval(ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_HEIGHT));
+$post_title_text_size = intval(ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_TEXT_SIZE));
+$post_title_text_size_mobile = intval(ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_TEXT_SIZE_MOBILE));
+$post_title_text_family = ubs_one_get_theme_mod(UBS_ONE_POST_TEXT_FAMILY);
+$post_title_text_weight = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_TEXT_WEIGHT);
+$post_title_text_style = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_TEXT_STYLE);
+$post_title_text_hpos = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_TEXT_HPOS);
+$post_title_text_vpos = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_TEXT_VPOS);
+$post_title_fg = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_FG);
+$post_title_bg = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_BG);
+$post_title_bg_trans = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_BG_TRANS);
 
 $page_fg = ubs_one_get_theme_mod(UBS_ONE_PAGE_FG);
 $page_bg = ubs_one_get_theme_mod(UBS_ONE_PAGE_BG);
@@ -44,11 +94,16 @@ $page_hover = ubs_one_get_theme_mod(UBS_ONE_PAGE_HOVER);
 $page_border = ubs_one_get_theme_mod(UBS_ONE_PAGE_BORDER);
 $page_title_image = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_IMAGE);
 $page_title_image_fixed = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_IMAGE_FIXED);
+$page_title_image_offset = intval(ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_IMAGE_OFFSET));
+$page_title_image_repeat = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_IMAGE_REPEAT);
 $page_title_height = intval(ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_HEIGHT));
 $page_title_text_size = intval(ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_TEXT_SIZE));
+$page_title_text_size_mobile = intval(ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_TEXT_SIZE_MOBILE));
 $page_title_text_family = ubs_one_get_theme_mod(UBS_ONE_PAGE_TEXT_FAMILY);
 $page_title_text_weight = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_TEXT_WEIGHT);
 $page_title_text_style = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_TEXT_STYLE);
+$page_title_text_hpos = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_TEXT_HPOS);
+$page_title_text_vpos = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_TEXT_VPOS);
 $page_title_fg = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_FG);
 $page_title_bg = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_BG);
 $page_title_bg_trans = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_BG_TRANS);
@@ -60,7 +115,6 @@ $sidebar_widget_fg = ubs_one_get_theme_mod(UBS_ONE_SIDEBAR_WIDGET_FG);
 $sidebar_widget_bg = ubs_one_get_theme_mod(UBS_ONE_SIDEBAR_WIDGET_BG);
 $sidebar_widget_border = ubs_one_get_theme_mod(UBS_ONE_SIDEBAR_WIDGET_BORDER);
 $sidebar_widget_border_color = ubs_one_get_theme_mod(UBS_ONE_SIDEBAR_WIDGET_BORDER_COLOR);
-
 ?>
 <style>	
 /* This is the dynamic css */
@@ -76,8 +130,11 @@ body
   color: <?php echo $fg_color; ?>;
   <?php if($bg_image != '') { ?>
   background-image: url(<?php echo $bg_image; ?>);
-  background-repeat: repeat;
-  background-position: left top;
+  background-repeat: <?php echo $header_bg_image_repeat; ?>;
+  <?php if($header_bg_image_repeat == UBS_ONE_REPEAT_NONE): ?>
+  background-size: cover; 
+  <?php endif; ?>
+  background-position: <?php printf("0px %dpx", $header_bg_image_offset); ?>;
   background-attachment: <?php echo $bg_fixed ? "fixed" : "scroll"; ?>;
   <?php } ?>
 }
@@ -109,7 +166,7 @@ body
 {
 /*  min-height: 2000px; */
   <?php if(is_admin_bar_showing()) { ?>
-  padding-top: <?php printf("%dpx", $header_height + 32); ?>;
+  padding-top: <?php printf("%dpx", $header_height); ?>;
   <?php } else { ?>
   padding-top: <?php printf("%dpx", $header_height); ?>;
   <?php } ?>
@@ -152,6 +209,7 @@ body
   display: table-cell;
   vertical-align: middle;
   padding: 0px;
+  font-size: <?php echo $header_logo_text_size; ?>px;
 }
 
 .ubs-one-header a.navbar-brand,
@@ -163,6 +221,15 @@ body
 	font-style: <?php echo $header_logo_text_style; ?>;
   line-height: 1.0;
 }
+  
+@media (max-width: 767px) {
+  .ubs-one-header a.navbar-brand,
+  .ubs-one-header a.navbar-brand:hover,
+  .ubs-one-header div.navbar-brand
+  {
+    font-size: <?php echo $header_logo_text_size_mobile; ?>px;
+  }
+}  
 
 .ubs-one-header .navbar-nav 
 {
@@ -215,6 +282,196 @@ body
 }
 	
 /* === BLOG === */
+
+#blog-title-bg
+{
+  <?php if($blog_title_image != ''): ?>
+    background-image: url('<?php echo $blog_title_image; ?>');
+    background-repeat: <?php echo $blog_title_image_repeat; ?>;
+    <?php if($blog_title_image_repeat == UBS_ONE_REPEAT_NONE): ?>
+      <?php if($blog_title_image_fixed): ?>
+      background-size: contain; 
+      <?php else: ?>
+      background-size: cover; 
+      <?php endif; ?>
+    <?php endif; ?>
+    background-position: <?php printf("0px %dpx", $blog_title_image_offset); ?>;
+    <?php if($blog_title_image_fixed): ?>
+    background-attachment: fixed;
+    <?php else: ?>
+    background-attachment: scroll;
+    <?php endif; ?>
+  <?php else: ?>
+    background-color: <?php echo $blog_title_bg_trans ? "transparent" : $blog_title_bg; ?>;
+	<?php endif; ?>
+  min-height: <?php echo $blog_title_height; ?>px;
+  width: 100%;
+  position: relative;
+  padding: 10px 0 10px 0;
+	margin: 0;
+  display: table;
+}
+	
+#blog-title
+{
+  display: table;
+  vertical-align: <?php echo $blog_title_text_vpos; ?>;
+  text-align: <?php echo $blog_title_text_hpos; ?>;
+  height: 100%;
+  color: <?php echo $blog_title_fg; ?>;
+  min-height: <?php echo $blog_title_height; ?>px;
+}
+	
+#blog-title h1 
+{
+  display: table-cell;
+  vertical-align: <?php echo $blog_title_text_vpos; ?>;
+  text-align: <?php echo $blog_title_text_hpos; ?>;
+	<?php if($blog_title_text_family != ''): ?>
+	font-family: <?php echo $blog_title_text_family; ?>;
+	<?php endif; ?>
+  font-size: <?php echo $blog_title_text_size; ?>px;
+  font-weight: <?php echo $blog_title_text_weight; ?>;
+	font-style: <?php echo $blog_title_text_style; ?>;
+  color: <?php echo $blog_title_fg; ?>;
+	margin: 0px;
+}
+	
+@media (max-width: 767px) 
+{
+  #blog-title h1 
+  {
+    font-size: <?php echo $blog_title_text_size_mobile; ?>px;
+  }
+}  
+
+/* === ARCHIVE === */
+
+#archive-title-bg
+{
+  <?php if($archive_title_image != ''): ?>
+    background-image: url('<?php echo $archive_title_image; ?>');
+    background-repeat: <?php echo $archive_title_image_repeat; ?>;
+    <?php if($archive_title_image_repeat == UBS_ONE_REPEAT_NONE): ?>
+      <?php if($archive_title_image_fixed): ?>
+      background-size: contain; 
+      <?php else: ?>
+      background-size: cover; 
+      <?php endif; ?>
+    <?php endif; ?>
+    background-position: <?php printf("0px %dpx", $archive_title_image_offset); ?>;
+    <?php if($archive_title_image_fixed): ?>
+    background-attachment: fixed;
+    <?php else: ?>
+    background-attachment: scroll;
+    <?php endif; ?>
+  <?php else: ?>
+    background-color: <?php echo $archive_title_bg_trans ? "transparent" : $archive_title_bg; ?>;
+	<?php endif; ?>
+  min-height: <?php echo $archive_title_height; ?>px;
+  width: 100%;
+  position: relative;
+  padding: 10px 0 10px 0;
+	margin: 0;
+  display: table;
+}
+	
+#archive-title
+{
+  display: table;
+  vertical-align: <?php echo $archive_title_text_vpos; ?>;
+  text-align: <?php echo $archive_title_text_hpos; ?>;
+  height: 100%;
+  color: <?php echo $archive_title_fg; ?>;
+  min-height: <?php echo $archive_title_height; ?>px;
+}
+	
+#archive-title h1 
+{
+  display: table-cell;
+  vertical-align: <?php echo $archive_title_text_vpos; ?>;
+  text-align: <?php echo $archive_title_text_hpos; ?>;
+	<?php if($archive_title_text_family != ''): ?>
+	font-family: <?php echo $archive_title_text_family; ?>;
+	<?php endif; ?>
+  font-size: <?php echo $archive_title_text_size; ?>px;
+  font-weight: <?php echo $archive_title_text_weight; ?>;
+	font-style: <?php echo $archive_title_text_style; ?>;
+  color: <?php echo $archive_title_fg; ?>;
+	margin: 0px;
+}
+	
+@media (max-width: 767px) 
+{
+  #archive-title h1 
+  {
+    font-size: <?php echo $archive_title_text_size_mobile; ?>px;
+  }
+}  
+
+/* === POST === */
+
+#post-title-bg
+{
+  <?php if($post_title_image != ''): ?>
+    background-image: url('<?php echo $post_title_image; ?>');
+    background-repeat: <?php echo $post_title_image_repeat; ?>;
+    <?php if($post_title_image_repeat == UBS_ONE_REPEAT_NONE): ?>
+      <?php if($post_title_image_fixed): ?>
+      background-size: contain; 
+      <?php else: ?>
+      background-size: cover; 
+      <?php endif; ?>
+    <?php endif; ?>
+    background-position: <?php printf("0px %dpx", $post_title_image_offset); ?>;
+    <?php if($post_title_image_fixed): ?>
+    background-attachment: fixed;
+    <?php else: ?>
+    background-attachment: scroll;
+    <?php endif; ?>
+  <?php else: ?>
+    background-color: <?php echo $post_title_bg_trans ? "transparent" : $post_title_bg; ?>;
+	<?php endif; ?>
+  min-height: <?php echo $post_title_height; ?>px;
+  width: 100%;
+  position: relative;
+  padding: 10px 0 10px 0;
+	margin: 0;
+  display: table;
+}
+	
+#post-title
+{
+  display: table;
+  vertical-align: <?php echo $post_title_text_vpos; ?>;
+  text-align: <?php echo $post_title_text_hpos; ?>;
+  height: 100%;
+  color: <?php echo $post_title_fg; ?>;
+  min-height: <?php echo $post_title_height; ?>px;
+}
+	
+#post-title h1 
+{
+  display: table-cell;
+  vertical-align: <?php echo $post_title_text_vpos; ?>;
+  text-align: <?php echo $post_title_text_hpos; ?>;
+	<?php if($post_title_text_family != ''): ?>
+	font-family: <?php echo $post_title_text_family; ?>;
+	<?php endif; ?>
+  font-size: <?php echo $post_title_text_size; ?>px;
+  font-weight: <?php echo $post_title_text_weight; ?>;
+	font-style: <?php echo $post_title_text_style; ?>;
+  color: <?php echo $post_title_fg; ?>;
+	margin: 0px;
+}
+	
+@media (max-width: 767px) 
+{
+  #post-title h1 
+  {
+    font-size: <?php echo $post_title_text_size_mobile; ?>px;
+  }
+}  
 
 .post, #comments {
 	position: relative;
@@ -300,9 +557,23 @@ body
 #page-title-bg
 {
   <?php if($page_title_image != ''): ?>
-  background: url('<?php echo $page_title_image; ?>') 50% 0 repeat <?php echo $page_title_image_fixed ? "fixed" : "scroll"; ?>;
-	<?php else: ?>
-  background-color: <?php echo $page_title_bg_trans ? "transparent" : $page_title_bg; ?>;
+    background-image: url('<?php echo $page_title_image; ?>');
+    background-repeat: <?php echo $page_title_image_repeat; ?>;
+    <?php if($page_title_image_repeat == UBS_ONE_REPEAT_NONE): ?>
+      <?php if($page_title_image_fixed): ?>
+      background-size: contain; 
+      <?php else: ?>
+      background-size: cover; 
+      <?php endif; ?>
+    <?php endif; ?>
+    background-position: <?php printf("0px %dpx", $page_title_image_offset); ?>;
+    <?php if($page_title_image_fixed): ?>
+    background-attachment: fixed;
+    <?php else: ?>
+    background-attachment: scroll;
+    <?php endif; ?>
+  <?php else: ?>
+    background-color: <?php echo $page_title_bg_trans ? "transparent" : $page_title_bg; ?>;
 	<?php endif; ?>
   min-height: <?php echo $page_title_height; ?>px;
   width: 100%;
@@ -315,8 +586,8 @@ body
 #page-title
 {
   display: table;
-  vertical-align: middle;
-  text-align: left;
+  vertical-align: <?php echo $page_title_text_vpos; ?>;
+  text-align: <?php echo $page_title_text_hpos; ?>;
   height: 100%;
   color: <?php echo $page_title_fg; ?>;
   min-height: <?php echo $page_title_height; ?>px;
@@ -325,8 +596,8 @@ body
 #page-title h1 
 {
   display: table-cell;
-  vertical-align: middle;
-  text-align: left;
+  vertical-align: <?php echo $page_title_text_vpos; ?>;
+  text-align: <?php echo $page_title_text_hpos; ?>;
 	<?php if($page_title_text_family != ''): ?>
 	font-family: <?php echo $page_title_text_family; ?>;
 	<?php endif; ?>
@@ -337,6 +608,14 @@ body
 	margin: 0px;
 }
 	
+@media (max-width: 767px) 
+{
+  #page-title h1 
+  {
+    font-size: <?php echo $page_title_text_size_mobile; ?>px;
+  }
+}  
+
 #primary .page 
 {
   padding: 20px;

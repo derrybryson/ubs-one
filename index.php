@@ -13,6 +13,7 @@
  */
 
 get_header();
+get_template_part('template-parts/title', 'blog');
 get_template_part('template-parts/content', 'header');
 get_template_part('template-parts/loop', 'index');
 get_template_part('template-parts/content', 'footer');
