@@ -9,6 +9,8 @@
  * @package UBS_One
  */
 
+if(ubs_one_get_show_header_footer())
+{
 ?>
 
 <footer class="footer">
@@ -35,7 +37,10 @@
 	</div><!-- container -->
 </footer>
 
-<?php wp_footer(); ?>
+<?php 
+} 
+wp_footer(); 
+?>
 
 </body>
 </html>

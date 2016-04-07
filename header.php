@@ -52,6 +52,8 @@ require_once("dynamic-css.php");
 <body <?php body_class(); ?>>
 
 <?php
+if(ubs_one_get_show_header_footer())
+{
 	$header_type = get_theme_mod('header_type', 'standard');
 	$logo = get_theme_mod('logo');
   if($logo)
@@ -186,3 +188,4 @@ require_once("dynamic-css.php");
 <!--<div style="height: 20px">
 </div> -->
 	</div>
+<?php } ?>  

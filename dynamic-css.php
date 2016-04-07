@@ -121,7 +121,7 @@ $sidebar_widget_border_color = ubs_one_get_theme_mod(UBS_ONE_SIDEBAR_WIDGET_BORD
 	
 body
 {
-  min-height: 2000px; 
+/*  min-height: 2000px; */
 	<?php if($text_family != '') { ?>
   font-family: <?php echo $text_family; ?>;
 	<?php } ?>
@@ -160,6 +160,7 @@ body
     
 }
   
+<?php if(ubs_one_get_show_header_footer()): ?>
 <?php if($header_fixed): ?>
 
 body 
@@ -197,6 +198,7 @@ body
 /*  margin-bottom: 19px;*/
 }
 <?php endif; ?>
+<?php endif; // show_header_footer ?>
 	
 .ubs-one-header
 {

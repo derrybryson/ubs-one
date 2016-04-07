@@ -7,9 +7,24 @@
  * @package UBS_One
  */
 
-$ubs_one_shortcode_prefix = "uo_";
+$ubs_one_shortcode_prefix = "uo";
+$ubs_one_show_header_footer = true;    
 
-function ubs_one_startswith($haystack, $needle, $case=true)
+function ubs_one_set_show_header_footer($show)
+{
+  global $ubs_one_show_header_footer;
+  
+  $ubs_one_show_header_footer = $show;
+}
+
+function ubs_one_get_show_header_footer()
+{
+  global $ubs_one_show_header_footer;
+  
+  return $ubs_one_show_header_footer;
+}
+
+function ubs_one_startswith($haystack, $needle, $case = true)
 {
   if($case)
     return strpos($haystack, $needle, 0) === 0;
@@ -17,7 +32,7 @@ function ubs_one_startswith($haystack, $needle, $case=true)
   return stripos($haystack, $needle, 0) === 0;
 }
 
-function ubs_one_endswith($haystack, $needle, $case=true)
+function ubs_one_endswith($haystack, $needle, $case = true)
 {
   $expectedPosition = strlen($haystack) - strlen($needle);
 
@@ -335,7 +350,7 @@ function ubs_one_get_theme_mod($key)
 {
 	global $ubs_one_defaults;
 	
-	error_log("get_theme_mod($key, {$ubs_one_defaults[$key]})");
+//	error_log("get_theme_mod($key, {$ubs_one_defaults[$key]})");
 	return get_theme_mod($key, $ubs_one_defaults[$key]);
 }
 
@@ -660,24 +675,286 @@ function ubs_one_primary_footer()
 /** 
  * Short codes
  */
+function ubs_one_tag_attr($attr, $value, $use = true)
+{
+  if($use && $value != '')
+    return " $attr=\"$value\"";
+  return '';
+}
+
+function ubs_one_add_shortcode($tag, $func)
+{
+  global $ubs_one_shortcode_prefix;
+  
+  add_shortcode($ubs_one_shortcode_prefix . "_" . $tag, $func);
+}
+
+function ubs_one_generic_shortcode_handler($atts, $content = null, $tag = null)
+{
+  global $ubs_one_shortcode_prefix;
+  
+  if($tag)
+  {
+    $tag = substr($tag, strlen($ubs_one_shortcode_prefix) + 1);
+    $a = shortcode_atts(array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+    ), $atts);
+    
+    $class = '';
+    if($a['class'] != '')
+      $class .= " class=\"" . $a['class'] . "\"";
+
+    $style = '';
+    if($a['style'] != '')
+      $style = " style=\"" . $a['style'] . "\"";
+
+    $id = '';
+    if($a['id'] != '')
+      $id = " id=\"" . $a['id'] . "\"";
+
+    return "<$tag$class$style$id>" . do_shortcode($content) . "</$tag>";
+  }
+  return '';
+}
+
 function ubs_one_glyphicon_shortcode_handler($atts, $content = null) 
 {
   $a = shortcode_atts(array(
       'icon' => 'asterisk',
       'class' => '',
+      'id' => '',
+      'style' => '',
   ), $atts);
 	
-	return "<span class=\"glyphicon glyphicon-{$a['icon']} {$a['class']}\" aria-hidden=\"true\"></span>";
+  $class = '';
+  if($a['class'] != '')
+    $class .= " " . $a['class'];
+
+  $style = '';
+  if($a['style'] != '')
+    $style = " style=\"" . $a['style'] . "\"";
+  
+  $id = '';
+  if($a['id'] != '')
+    $id = " id=\"" . $a['id'] . "\"";
+  
+	return "<span class=\"glyphicon glyphicon-{$a['icon']}$class\" aria-hidden=\"true\"$style$id></span>";
 }
-add_shortcode($ubs_one_shortcode_prefix . 'glyphicon', 'ubs_one_glyphicon_shortcode_handler');
+ubs_one_add_shortcode('glyphicon', 'ubs_one_glyphicon_shortcode_handler');
 
 function ubs_one_fa_shortcode_handler($atts, $content = null) 
 {
   $a = shortcode_atts(array(
       'icon' => 'asterisk',
       'class' => '',
+      'style' => '',
+      'id' => '',
   ), $atts);
 	
-	return "<i class=\"fa fa-{$a['icon']} {$a['class']}\"></i>";
+  $class = '';
+  if($a['class'] != '')
+    $class .= " " . $a['class'];
+
+  $style = '';
+  if($a['style'] != '')
+    $style = " style=\"" . $a['style'] . "\"";
+  
+  $id = '';
+  if($a['id'] != '')
+    $id = " id=\"" . $a['id'] . "\"";
+  
+	return "<i class=\"fa fa-{$a['icon']}$class\"$style$id></i>";
 }
-add_shortcode($ubs_one_shortcode_prefix . 'fa', 'ubs_one_fa_shortcode_handler');
+ubs_one_add_shortcode('fa', 'ubs_one_fa_shortcode_handler');
+
+function ubs_one_container_shortcode_handler($atts, $content = null)
+{
+  $a = shortcode_atts(array(
+      'class' => '',
+      'id' => '',
+      'style' => '',
+      'fluid' => 0,
+  ), $atts);
+  
+  $class = '';
+  if($a['class'] != '')
+    $class .= " " . $a['class'];
+
+  $style = '';
+  if($a['style'] != '')
+    $style = " style=\"" . $a['style'] . "\"";
+  
+  $id = '';
+  if($a['id'] != '')
+    $id = " id=\"" . $a['id'] . "\"";
+  
+  if(intval($a['fluid']))
+    return "<div class=\"container-fluid$class\"$style$id>" . do_shortcode($content) . "</div>";
+  else
+    return "<div class=\"container$class\"$style$id>" . do_shortcode($content) . "</div>";
+}
+ubs_one_add_shortcode('container', 'ubs_one_container_shortcode_handler');
+
+function ubs_one_row_shortcode_handler($atts, $content = null)
+{
+  $a = shortcode_atts(array(
+      'class' => '',
+      'id' => '',
+      'style' => '',
+  ), $atts);
+  
+  $class = '';
+  if($a['class'] != '')
+    $class .= " " . $a['class'];
+
+  $style = '';
+  if($a['style'] != '')
+    $style = " style=\"" . $a['style'] . "\"";
+  
+  $id = '';
+  if($a['id'] != '')
+    $id = " id=\"" . $a['id'] . "\"";
+  
+  return "<div class=\"row $class\"$style$id>" . do_shortcode($content) . "</div>";
+}
+ubs_one_add_shortcode('row', 'ubs_one_row_shortcode_handler');
+
+function ubs_one_col_shortcode_handler($atts, $content = null)
+{
+  $a = shortcode_atts(array(
+      'class' => '',
+      'id' => '',
+      'style' => '',
+      'width' => 1,
+      'offset' => 0,
+      'push' => 0,
+      'pull' => 0,
+      'device' => 'sm',
+  ), $atts);
+  
+  $class = '';
+  if($a['class'] != '')
+    $class .= " " . $a['class'];
+
+  $style = '';
+  if($a['style'] != '')
+    $style = " style=\"" . $a['style'] . "\"";
+  
+  $id = '';
+  if($a['id'] != '')
+    $id = " id=\"" . $a['id'] . "\"";
+  
+  $offset = intval($a['offset']);
+  if($offset > 0)
+    $offset = " col-{$a['device']}-offset-$offset";
+  else
+    $offset = '';
+
+  $push = intval($a['push']);
+  if($push > 0)
+    $push = " col-{$a['device']}-push-$push";
+  else
+    $push = '';
+
+  $pull = intval($a['pull']);
+  if($pull > 0)
+    $pull = " col-{$a['device']}-pull-$pull";
+  else
+    $pull = '';  
+  
+  return "<div class=\"col-{$a['device']}-" . intval($a['width']) . "$offset$push$pull$class\"$style$id>" . do_shortcode($content) . "</div>";
+}
+ubs_one_add_shortcode('col', 'ubs_one_col_shortcode_handler');
+
+function ubs_one_jumbotron_shortcode_handler($atts, $content = null)
+{
+  $a = shortcode_atts(array(
+      'id' => '',
+      'class' => '',
+      'style' => '',
+  ), $atts);
+  
+  $class = '';
+  if($a['class'] != '')
+    $class .= " " . $a['class'];
+
+  $style = '';
+  if($a['style'] != '')
+    $style = " style=\"" . $a['style'] . "\"";
+  
+  $id = '';
+  if($a['id'] != '')
+    $id = " id=\"" . $a['id'] . "\"";
+  
+  return "<div class=\"jumbotron$class\"$style$id>" . do_shortcode($content) . "</div>";
+}
+ubs_one_add_shortcode('jumbotron', 'ubs_one_jumbotron_shortcode_handler');
+
+ubs_one_add_shortcode('p', 'ubs_one_generic_shortcode_handler');
+ubs_one_add_shortcode('mark', 'ubs_one_generic_shortcode_handler');
+ubs_one_add_shortcode('del', 'ubs_one_generic_shortcode_handler');
+
+function ubs_one_table_shortcode_handler($atts, $content = null)
+{
+  $a = shortcode_atts(array(
+      'id' => '',
+      'class' => '',
+      'style' => '',
+      'striped' => 0,
+      'bordered' => 0,
+      'responsive' => 0,
+      'hover' => 0,
+      'condensed' => 0,
+  ), $atts);
+  
+  $class = "table";
+  if(intval($a['striped']))
+    $class .= " table-striped";
+  if(intval($a['bordered']))
+    $class .= " table-bordered";
+  if(intval($a['responsive']))
+    $class .= " table-respsonive";
+  if(intval($a['hover']))
+    $class .= " table-hover";
+  if(intval($a['condensed']))
+    $class .= " table-condensed";
+  if($a['class'] != '')
+    $class .= " " . $a['class'];
+
+  $style = '';
+  if($a['style'] != '')
+    $style = " style=\"" . $a['style'] . "\"";
+  
+  $id = '';
+  if($a['id'] != '')
+    $id = " id=\"" . $a['id'] . "\"";
+  
+  return "<table class=\"$class\"$style$id>" . do_shortcode($content) . "</table>";
+}
+ubs_one_add_shortcode('table', 'ubs_one_table_shortcode_handler');
+ubs_one_add_shortcode('tr', 'ubs_one_generic_shortcode_handler');
+ubs_one_add_shortcode('th', 'ubs_one_generic_shortcode_handler');
+ubs_one_add_shortcode('td', 'ubs_one_generic_shortcode_handler');
+
+function ubs_one_a_shortcode_handler($atts, $content = null)
+{
+  $a = shortcode_atts(array(
+      'id' => '',
+      'class' => '',
+      'style' => '',
+      'href' => '',
+      'onclick' => '',
+  ), $atts);
+  
+  $class = ubs_one_tag_attr('class', $a['class']);
+  $style = ubs_one_tag_attr('style', $a['style']);
+  $id = ubs_one_tag_attr('id', $a['id']);
+  $href = ubs_one_tag_attr('href', $a['href']);
+  $onclick = ubs_one_tag_attr('onclick', $a['onclick']);
+  
+  return "<a $class$style$id$href$onclick>" . do_shortcode($content) . "</a>";
+}
+ubs_one_add_shortcode('a', 'ubs_one_a_shortcode_handler');
+ubs_one_add_shortcode('button', 'ubs_one_generic_shortcode_handler');
