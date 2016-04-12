@@ -1230,7 +1230,9 @@ function ubs_one_slide_shortcode_handler($atts, $content = null)
   $ret .= "<div class=\"item" . ($ubs_one_carslides ? "" : " active") . "\">";
   if($a['href'] != '')
     $ret .= "<a href=\"{$a['href']}\">";
-  $ret .= "<img src=\"{$a['img']}\" alt=\"{$a['alt']}\">";
+  $ret .= "<center><img src=\"{$a['img']}\" alt=\"{$a['alt']}\"></center>";
+  if($a['href'] != '')
+    $ret .= "</a>";
   $ret .= "<div class=\"carousel-caption\">" . do_shortcode($content) . "</div>";
   $ret .= "</div>";
 
@@ -1239,3 +1241,19 @@ function ubs_one_slide_shortcode_handler($atts, $content = null)
 }
 ubs_one_add_shortcode('slide', 'ubs_one_slide_shortcode_handler');
 
+function ubs_one_sidebar_shortcode_handler($atts, $content = null)
+{
+  $a = shortcode_atts(array(
+      'id' => '',
+  ), $atts);
+  
+  if(is_active_sidebar($a['id']))
+  {
+    ob_start();
+    dynamic_sidebar($a['id']);
+    $sidebar = ob_get_contents();
+    ob_end_clean();
+    return $sidebar;
+  }
+}
+ubs_one_add_shortcode('sidebar', 'ubs_one_sidebar_shortcode_handler');
