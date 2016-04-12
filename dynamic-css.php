@@ -37,6 +37,7 @@ $blog_title_image = ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_IMAGE);
 $blog_title_image_fixed = ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_IMAGE_FIXED);
 $blog_title_image_offset = intval(ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_IMAGE_OFFSET));
 $blog_title_image_repeat = ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_IMAGE_REPEAT);
+$blog_title_image_size = ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_IMAGE_SIZE);
 $blog_title_height = intval(ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_HEIGHT));
 $blog_title_text_size = intval(ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_TEXT_SIZE));
 $blog_title_text_size_mobile = intval(ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE_TEXT_SIZE_MOBILE));
@@ -53,6 +54,7 @@ $archive_title_image = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_IMAGE);
 $archive_title_image_fixed = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_IMAGE_FIXED);
 $archive_title_image_offset = intval(ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_IMAGE_OFFSET));
 $archive_title_image_repeat = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_IMAGE_REPEAT);
+$archive_title_image_size = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_IMAGE_SIZE);
 $archive_title_height = intval(ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_HEIGHT));
 $archive_title_text_size = intval(ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_TEXT_SIZE));
 $archive_title_text_size_mobile = intval(ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_TEXT_SIZE_MOBILE));
@@ -64,6 +66,7 @@ $archive_title_text_vpos = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_TEXT_VPOS
 $archive_title_fg = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_FG);
 $archive_title_bg = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_BG);
 $archive_title_bg_trans = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_BG_TRANS);
+$archive_title_bg_size = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_BG_SIZE);
 
 $post_fg = ubs_one_get_theme_mod(UBS_ONE_POST_FG);
 $post_bg = ubs_one_get_theme_mod(UBS_ONE_POST_BG);
@@ -75,6 +78,7 @@ $post_title_image = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_IMAGE);
 $post_title_image_fixed = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_IMAGE_FIXED);
 $post_title_image_offset = intval(ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_IMAGE_OFFSET));
 $post_title_image_repeat = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_IMAGE_REPEAT);
+$post_title_image_size = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_IMAGE_SIZE);
 $post_title_height = intval(ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_HEIGHT));
 $post_title_text_size = intval(ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_TEXT_SIZE));
 $post_title_text_size_mobile = intval(ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_TEXT_SIZE_MOBILE));
@@ -86,6 +90,7 @@ $post_title_text_vpos = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_TEXT_VPOS);
 $post_title_fg = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_FG);
 $post_title_bg = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_BG);
 $post_title_bg_trans = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_BG_TRANS);
+$post_title_bg_size = ubs_one_get_theme_mod(UBS_ONE_POST_TITLE_BG_SIZE);
 
 $page_fg = ubs_one_get_theme_mod(UBS_ONE_PAGE_FG);
 $page_bg = ubs_one_get_theme_mod(UBS_ONE_PAGE_BG);
@@ -96,6 +101,7 @@ $page_title_image = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_IMAGE);
 $page_title_image_fixed = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_IMAGE_FIXED);
 $page_title_image_offset = intval(ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_IMAGE_OFFSET));
 $page_title_image_repeat = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_IMAGE_REPEAT);
+$page_title_image_size = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_IMAGE_SIZE);
 $page_title_height = intval(ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_HEIGHT));
 $page_title_text_size = intval(ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_TEXT_SIZE));
 $page_title_text_size_mobile = intval(ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_TEXT_SIZE_MOBILE));
@@ -290,12 +296,8 @@ body
   <?php if($blog_title_image != ''): ?>
     background-image: url('<?php echo $blog_title_image; ?>');
     background-repeat: <?php echo $blog_title_image_repeat; ?>;
-    <?php if($blog_title_image_repeat == UBS_ONE_REPEAT_NONE): ?>
-      <?php if($blog_title_image_fixed): ?>
-      background-size: contain; 
-      <?php else: ?>
-      background-size: cover; 
-      <?php endif; ?>
+    <?php if($blog_title_image_size != ''): ?>
+    background-size: <?php echo $blog_title_image_size; ?>;
     <?php endif; ?>
     background-position: <?php printf("0px %dpx", $blog_title_image_offset); ?>;
     <?php if($blog_title_image_fixed): ?>
@@ -354,12 +356,8 @@ body
   <?php if($archive_title_image != ''): ?>
     background-image: url('<?php echo $archive_title_image; ?>');
     background-repeat: <?php echo $archive_title_image_repeat; ?>;
-    <?php if($archive_title_image_repeat == UBS_ONE_REPEAT_NONE): ?>
-      <?php if($archive_title_image_fixed): ?>
-      background-size: contain; 
-      <?php else: ?>
-      background-size: cover; 
-      <?php endif; ?>
+    <?php if($archive_title_image_size != ''): ?>
+    background-size: <?php echo $archive_title_image_size; ?>;
     <?php endif; ?>
     background-position: <?php printf("0px %dpx", $archive_title_image_offset); ?>;
     <?php if($archive_title_image_fixed): ?>
@@ -418,12 +416,8 @@ body
   <?php if($post_title_image != ''): ?>
     background-image: url('<?php echo $post_title_image; ?>');
     background-repeat: <?php echo $post_title_image_repeat; ?>;
-    <?php if($post_title_image_repeat == UBS_ONE_REPEAT_NONE): ?>
-      <?php if($post_title_image_fixed): ?>
-      background-size: contain; 
-      <?php else: ?>
-      background-size: cover; 
-      <?php endif; ?>
+    <?php if($post_title_image_size != ''): ?>
+    background-size: <?php echo $post_title_image_size; ?>;
     <?php endif; ?>
     background-position: <?php printf("0px %dpx", $post_title_image_offset); ?>;
     <?php if($post_title_image_fixed): ?>
@@ -561,12 +555,8 @@ body
   <?php if($page_title_image != ''): ?>
     background-image: url('<?php echo $page_title_image; ?>');
     background-repeat: <?php echo $page_title_image_repeat; ?>;
-    <?php if($page_title_image_repeat == UBS_ONE_REPEAT_NONE): ?>
-      <?php if($page_title_image_fixed): ?>
-      background-size: contain; 
-      <?php else: ?>
-      background-size: cover; 
-      <?php endif; ?>
+    <?php if($page_title_image_size != ''): ?>
+    background-size: <?php echo $page_title_image_size; ?>;
     <?php endif; ?>
     background-position: <?php printf("0px %dpx", $page_title_image_offset); ?>;
     <?php if($page_title_image_fixed): ?>

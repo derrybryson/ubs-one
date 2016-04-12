@@ -14,6 +14,11 @@ $layout_type = ubs_one_get_theme_mod(UBS_ONE_LAYOUT_TYPE);
 <?php
 switch($layout_type)
 {
+  case UBS_ONE_LAYOUT_TYPE_1COL :
+  ?>
+  <?php
+  break;
+
   case UBS_ONE_LAYOUT_TYPE_2COLLEFT :
   ?>
     <div class="col-sm-3 col-sm-pull-9 ">

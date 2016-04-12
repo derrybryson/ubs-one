@@ -41,6 +41,13 @@ if(ubs_one_get_show_header_footer())
 } 
 wp_footer(); 
 ?>
+<script>
+jQuery(function($) 
+{ 
+  $("[data-toggle=tooltip]").tooltip(); 
+  $("[data-toggle=popover]").popover(); 
+});
+</script>
 
 </body>
 </html>

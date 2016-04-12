@@ -7,6 +7,8 @@
  * @package UBS_One
  */
 
+$meta = get_post_meta($post->ID);
+$raw_content = isset($meta[UBS_ONE_META_RAW_CONTENT]) ? $meta[UBS_ONE_META_RAW_CONTENT][0] == "Y" : false;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -34,7 +36,7 @@
 	<?php } ?>
 	
 	<div class="post-body">
-		<?php the_content(); ?>
+		<?php if($raw_content) echo do_shortcode(get_the_content()); else the_content(); ?>
 	</div><!-- post-body -->
 
 </article><!-- #post-## -->

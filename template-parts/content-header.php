@@ -17,6 +17,12 @@ error_log("layout_type = $layout_type");
 
 switch($layout_type)
 {
+  case UBS_ONE_LAYOUT_TYPE_1COL :
+  ?>
+    <main id="content" class="col-sm-12" role="main">
+  <?php
+  break;
+  
   case UBS_ONE_LAYOUT_TYPE_2COLLEFT :
   ?>
     <main id="content" class="col-sm-9 col-sm-push-3" role="main">
