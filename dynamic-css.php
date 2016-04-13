@@ -68,6 +68,24 @@ $archive_title_bg = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_BG);
 $archive_title_bg_trans = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_BG_TRANS);
 $archive_title_bg_size = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_TITLE_BG_SIZE);
 
+$search_title_image = ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_IMAGE);
+$search_title_image_fixed = ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_IMAGE_FIXED);
+$search_title_image_offset = intval(ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_IMAGE_OFFSET));
+$search_title_image_repeat = ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_IMAGE_REPEAT);
+$search_title_image_size = ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_IMAGE_SIZE);
+$search_title_height = intval(ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_HEIGHT));
+$search_title_text_size = intval(ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_TEXT_SIZE));
+$search_title_text_size_mobile = intval(ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_TEXT_SIZE_MOBILE));
+$search_title_text_family = ubs_one_get_theme_mod(UBS_ONE_SEARCH_TEXT_FAMILY);
+$search_title_text_weight = ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_TEXT_WEIGHT);
+$search_title_text_style = ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_TEXT_STYLE);
+$search_title_text_hpos = ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_TEXT_HPOS);
+$search_title_text_vpos = ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_TEXT_VPOS);
+$search_title_fg = ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_FG);
+$search_title_bg = ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_BG);
+$search_title_bg_trans = ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_BG_TRANS);
+$search_title_bg_size = ubs_one_get_theme_mod(UBS_ONE_SEARCH_TITLE_BG_SIZE);
+
 $post_fg = ubs_one_get_theme_mod(UBS_ONE_POST_FG);
 $post_bg = ubs_one_get_theme_mod(UBS_ONE_POST_BG);
 $post_link = ubs_one_get_theme_mod(UBS_ONE_POST_LINK);
@@ -406,6 +424,66 @@ body
   #archive-title h1 
   {
     font-size: <?php echo $archive_title_text_size_mobile; ?>px;
+  }
+}  
+
+/* === SEARCH === */
+
+#search-title-bg
+{
+  <?php if($search_title_image != ''): ?>
+    background-image: url('<?php echo $search_title_image; ?>');
+    background-repeat: <?php echo $search_title_image_repeat; ?>;
+    <?php if($search_title_image_size != ''): ?>
+    background-size: <?php echo $search_title_image_size; ?>;
+    <?php endif; ?>
+    background-position: <?php printf("0px %dpx", $search_title_image_offset); ?>;
+    <?php if($search_title_image_fixed): ?>
+    background-attachment: fixed;
+    <?php else: ?>
+    background-attachment: scroll;
+    <?php endif; ?>
+  <?php else: ?>
+    background-color: <?php echo $search_title_bg_trans ? "transparent" : $search_title_bg; ?>;
+	<?php endif; ?>
+  min-height: <?php echo $search_title_height; ?>px;
+  width: 100%;
+  position: relative;
+  padding: 10px 0 10px 0;
+	margin: 0;
+  display: table;
+}
+	
+#search-title
+{
+  display: table;
+  vertical-align: <?php echo $search_title_text_vpos; ?>;
+  text-align: <?php echo $search_title_text_hpos; ?>;
+  height: 100%;
+  color: <?php echo $search_title_fg; ?>;
+  min-height: <?php echo $search_title_height; ?>px;
+}
+	
+#search-title h1 
+{
+  display: table-cell;
+  vertical-align: <?php echo $search_title_text_vpos; ?>;
+  text-align: <?php echo $search_title_text_hpos; ?>;
+	<?php if($search_title_text_family != ''): ?>
+	font-family: <?php echo $search_title_text_family; ?>;
+	<?php endif; ?>
+  font-size: <?php echo $search_title_text_size; ?>px;
+  font-weight: <?php echo $search_title_text_weight; ?>;
+	font-style: <?php echo $search_title_text_style; ?>;
+  color: <?php echo $search_title_fg; ?>;
+	margin: 0px;
+}
+	
+@media (max-width: 767px) 
+{
+  #search-title h1 
+  {
+    font-size: <?php echo $search_title_text_size_mobile; ?>px;
   }
 }  
 

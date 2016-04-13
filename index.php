@@ -14,8 +14,8 @@
 
 get_header();
 get_template_part('template-parts/title', 'blog');
-get_template_part('template-parts/content', 'header');
-get_template_part('template-parts/loop', 'index');
-get_template_part('template-parts/content', 'footer');
+get_template_part('template-parts/header', 'blog');
+get_template_part('template-parts/loop', 'blog');
+get_template_part('template-parts/footer', 'blog');
 get_footer();
 ?>

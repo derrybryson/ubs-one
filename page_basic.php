@@ -7,6 +7,7 @@
  * @package UBS_One
  */
 
+error_log("is_front_page = " . print_r(is_front_page(), true) . ", page = " . get_query_var('page'));
 get_header();
 while(have_posts())
 {

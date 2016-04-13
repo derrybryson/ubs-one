@@ -8,12 +8,12 @@
  */
 
 get_header();
-while(have_posts())
+if(have_posts())
 {
   the_post();
-  get_template_part('template-parts/content', 'header');
+  get_template_part('template-parts/header', 'page');
   echo do_shortcode(get_the_content());
-  get_template_part('template-parts/content', 'footer');
+  get_template_part('template-parts/footer', 'page');
 }
 get_footer();
 ?>

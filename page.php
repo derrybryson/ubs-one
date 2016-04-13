@@ -17,11 +17,11 @@ while(have_posts())
 {
   the_post();
   get_template_part('template-parts/title', 'page');
-  get_template_part('template-parts/content', 'header');
+  get_template_part('template-parts/header', 'page');
   get_template_part('template-parts/content', 'page');
 	if(comments_open() || get_comments_number())
 		comments_template();
-  get_template_part('template-parts/content', 'footer');
+  get_template_part('template-parts/footer', 'page');
 }
 get_footer();
 ?>

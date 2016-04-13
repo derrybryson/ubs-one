@@ -12,7 +12,7 @@ while(have_posts())
 {
   the_post();
   get_template_part('template-parts/title', 'post');
-  get_template_part('template-parts/content', 'header');
+  get_template_part('template-parts/header', get_post_format());
 	get_template_part('template-parts/content', get_post_format());
 	the_post_navigation();
 
@@ -20,6 +20,6 @@ while(have_posts())
 	if(comments_open() || get_comments_number())
 		comments_template();
   
-  get_template_part('template-parts/content', 'footer');
+  get_template_part('template-parts/footer', get_post_format());
 }
 get_footer();

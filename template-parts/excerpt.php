@@ -36,7 +36,7 @@ $raw_content = isset($meta[UBS_ONE_META_RAW_CONTENT]) ? $meta[UBS_ONE_META_RAW_C
 	<?php } ?>
 	
 	<div class="post-body">
-		<?php if($raw_content) echo do_shortcode(get_the_content()); else the_content(); ?>
+		<?php the_excerpt(); ?>
 	</div><!-- post-body -->
 </article><!-- #post-## -->
 

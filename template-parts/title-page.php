@@ -7,6 +7,7 @@
  * @package UBS_One
  */
 error_log("post type = " . get_post_type() . ", post format = " . get_post_format());
+if(!is_front_page()):
 ?>
 <div id="page-title-bg">
   <div class="container">
@@ -17,3 +18,4 @@ error_log("post type = " . get_post_type() . ", post format = " . get_post_forma
     </div>
   </div>
 </div>
+<?php endif; ?>

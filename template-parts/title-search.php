@@ -7,20 +7,16 @@
  * @package UBS_One
  */
 
-$blog_title = ubs_one_get_theme_mod(UBS_ONE_BLOG_TITLE);
-
-if(!is_front_page()):
 ?>
-<div id="blog-title-bg">
+<div id="search-title-bg">
   <div class="container">
     <div class="row">
-      <div class="col-sm-12" id="blog-title">
+      <div class="col-sm-12" id="archive-title">
         <h1>
-          <?php echo $blog_title; ?>
+          <?php printf(esc_html__('Search Results for: %s', 'ubs-one'), '<span>' . get_search_query() . '</span>'); ?>
         </h1>
       </div>
     </div>
   </div>
 </div>
-<?php endif; ?>
 
