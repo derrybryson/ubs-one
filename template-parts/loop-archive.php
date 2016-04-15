@@ -1,6 +1,4 @@
 <?php
-$excerpt = ubs_one_get_theme_mod(UBS_ONE_ARCHIVE_EXCERPT);
-
 if(have_posts())
 {
   /* Start the Loop */
@@ -14,10 +12,7 @@ if(have_posts())
      */
   	the_title(sprintf('<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h3>');
 
-    if($excerpt)
-      get_template_part('template-parts/excerpt', get_post_format());
-    else
-      get_template_part('template-parts/content', get_post_format());
+    get_template_part('template-parts/excerpt', get_post_format());
   }
   the_posts_navigation();
 }

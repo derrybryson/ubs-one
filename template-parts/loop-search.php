@@ -10,7 +10,7 @@ if(have_posts()):
      */
   	the_title(sprintf('<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h3>');
 
-    get_template_part('template-parts/content', get_post_format());
+    get_template_part('template-parts/excerpt', get_post_format());
   endwhile;
   the_posts_navigation();
 else :

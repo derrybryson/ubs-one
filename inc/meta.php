@@ -42,12 +42,7 @@ function ubs_one_meta_save($post_id)
     return;
   }
 
-  // Checks for input and sanitizes/saves if needed
-  if(isset($_POST['ubs_one_raw_content'])) 
-  {
-    update_post_meta($post_id, UBS_ONE_META_RAW_CONTENT, sanitize_text_field($_POST['ubs_one_raw_content']));
-  }
-
+  update_post_meta($post_id, UBS_ONE_META_RAW_CONTENT, isset($_POST['ubs_one_raw_content']) ? $_POST['ubs_one_raw_content'] : "");
 }
 add_action('save_post', 'ubs_one_meta_save');
 

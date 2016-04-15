@@ -582,6 +582,7 @@ body
 
 .post-image img {
 	height: auto;
+  width: 100%;
 }
 
 .post-details {
@@ -787,6 +788,13 @@ body
 {
   color: <?php echo $sidebar_hover; ?>;    
 }
+  
+/* === CONTENT === */
+
+#content
+{
+  padding: 0px 0px 20px 0px;    
+}
 
 /* === COMMENTS === */
 
@@ -843,6 +851,8 @@ body
 #comments .comment-metadata {
 	margin: 10px 0 0;
 }
+
+/* === FOOTER === */
 
 .footer
 {

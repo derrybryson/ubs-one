@@ -97,7 +97,6 @@ define('UBS_ONE_BLOG_TITLE_FG', 'blog_title_fg');
 define('UBS_ONE_BLOG_TITLE_BG', 'blog_title_bg');
 define('UBS_ONE_BLOG_TITLE_BG_TRAN', 'blog_title_bg_trans');
 
-define('UBS_ONE_ARCHIVE_EXCERPT', 'archive_excerpt');
 define('UBS_ONE_ARCHIVE_TITLE_IMAGE', 'archive_title_image');
 define('UBS_ONE_ARCHIVE_TITLE_IMAGE_FIXED', 'archive_title_image_fixed');
 define('UBS_ONE_ARCHIVE_TITLE_IMAGE_OFFSET', 'archive_title_image_offset');
@@ -116,7 +115,6 @@ define('UBS_ONE_ARCHIVE_TITLE_BG', 'archive_title_bg');
 define('UBS_ONE_ARCHIVE_TITLE_BG_TRAN', 'archive_title_bg_trans');
 define('UBS_ONE_ARCHIVE_TITLE_BG_SIZE', 'archive_title_bg_size');
 
-define('UBS_ONE_SEARCH_EXCERPT', 'search_excerpt');
 define('UBS_ONE_SEARCH_TITLE_IMAGE', 'search_title_image');
 define('UBS_ONE_SEARCH_TITLE_IMAGE_FIXED', 'search_title_image_fixed');
 define('UBS_ONE_SEARCH_TITLE_IMAGE_OFFSET', 'search_title_image_offset');
@@ -284,7 +282,6 @@ $ubs_one_defaults = array(
   UBS_ONE_BLOG_TITLE_BG => '#000000',
   UBS_ONE_BLOG_TITLE_BG_TRANS => false,
 	
-  UBS_ONE_ARCHIVE_EXCERPT => true,
   UBS_ONE_ARCHIVE_TITLE_IMAGE => '',
   UBS_ONE_ARCHIVE_TITLE_IMAGE_FIXED => true,
   UBS_ONE_ARCHIVE_TITLE_IMAGE_OFFSET => 0,
@@ -302,7 +299,6 @@ $ubs_one_defaults = array(
   UBS_ONE_ARCHIVE_TITLE_BG => '#000000',
   UBS_ONE_ARCHIVE_TITLE_BG_TRANS => false,
 	
-  UBS_ONE_SEARCH_EXCERPT => true,
   UBS_ONE_SEARCH_TITLE_IMAGE => '',
   UBS_ONE_SEARCH_TITLE_IMAGE_FIXED => true,
   UBS_ONE_SEARCH_TITLE_IMAGE_OFFSET => 0,
@@ -478,6 +474,7 @@ function ubs_one_setup()
 	 * Enable support for Post Formats.
 	 * See https://developer.wordpress.org/themes/functionality/post-formats/
 	 */
+/*  
 	add_theme_support('post-formats', array(
 		'aside',
 		'image',
@@ -485,6 +482,7 @@ function ubs_one_setup()
 		'quote',
 		'link',
 	));
+*/  
 
 	// Set up the WordPress core custom background feature.
 //	add_theme_support( 'custom-background', apply_filters( 'ubs_one_custom_background_args', array(
