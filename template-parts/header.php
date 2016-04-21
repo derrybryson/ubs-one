@@ -7,15 +7,15 @@
  * @package UBS_One
  */
 
-$layout_type = ubs_one_get_theme_mod(UBS_ONE_LAYOUT_TYPE);
-error_log("layout_type = $layout_type");
+$ubs_one_layout_type = ubs_one_get_theme_mod(UBS_ONE_LAYOUT_TYPE);
+error_log("layout_type = $ubs_one_layout_type");
 
 ?>
-<div class="container">
+<div class="container<?php echo $ubs_one_full_width ? "-fluid" : ""; ?>">
   <div class="row" id="primary">
 <?php
 
-switch($layout_type)
+switch($ubs_one_layout_type)
 {
   case UBS_ONE_LAYOUT_TYPE_1COL :
   ?>

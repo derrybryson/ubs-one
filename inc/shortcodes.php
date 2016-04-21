@@ -171,10 +171,13 @@ function ubs_one_container_shortcode_handler($atts, $content = null)
 {
   $defs = ubs_one_basic_defs();
   $defs += array(
-    'fluid' => 0,
+    'fluid' => -1,
   );
   $a = shortcode_atts($defs, $atts);
   
+  if(intval($a['fluid']) == -1)
+    $a['fluid'] = ubs_one_get_theme_mod(UBS_ONE_FULL_WIDTH) ? 1 : 0;
+ 
   $class = ubs_one_tag_attr('class', ubs_one_concat_value("container" . (intval($a['fluid']) ? "-fluid" : ""), $a['class']));
   $style = ubs_one_tag_attr('style', $a['style']);
   $id = ubs_one_tag_attr('id', $a['id']);
@@ -691,5 +694,51 @@ function ubs_one_blog_shortcode_handler($atts, $content = null)
   return $ret;
 }
 ubs_one_add_shortcode('blog', 'ubs_one_blog_shortcode_handler');
+
+function ubs_one_blog_grid_shortcode_handler($atts, $content = null)
+{
+  $a = shortcode_atts(array(
+    'id' => '',
+    'columns' => 3,
+    'cat' => '',
+    'count' => 5,
+    'post_per_page' => 5,
+    'offset' => 0,
+    'orderby' => 'date',
+    'order' => 'DESC',
+    'height' => 600,
+  ), $atts);
+  
+  $width = 100 / intval($a['columns']);
+  
+  $args = array(
+    'posts_per_page' => intval($a['count']),
+    'offset' => intval($a['offset']),
+    'order' => $a['order'],
+    'orderby' => $a['orderby']
+  );
+  if($a['cat'] != '')
+    $args['category'] = $a['cat'];
+  error_log("args = " . print_r($args, true));
+  $posts = get_posts($args);
+  $postnum = 0;
+  global $post;
+  $ret = "<div class=\"blog-grid\">";
+  foreach($posts as $post)
+  {
+    $ret .= "<div class=\"blog-grid-post\" style=\"width: " . $width . "%; height: " . intval($a['height']) . "px;\">";
+    setup_postdata($post);
+    ob_start();
+  	the_title(sprintf('<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h3>');
+    get_template_part('template-parts/excerpt', get_post_format());
+    $ret .= ob_get_contents();
+    ob_end_clean();
+    $ret .= "</div>";
+  }
+  wp_reset_postdata();
+  $ret .= "</div>";
+  return $ret;
+}
+ubs_one_add_shortcode('blog-grid', 'ubs_one_blog_grid_shortcode_handler');
 
 ?>

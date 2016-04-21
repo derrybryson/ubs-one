@@ -29,17 +29,17 @@ require_once('inc/wp_bootstrap_navwalker.php');
 	
 <?php wp_head();
 	
-$favicon = ubs_one_get_theme_mod(UBS_ONE_FAVICON);
+$ubs_one_favicon = ubs_one_get_theme_mod(UBS_ONE_FAVICON);
 	
-if($favicon != '') { 
-	if(ubs_one_endswith($favicon, ".jpg") || ubs_one_endswith($favicon, "*.jpeg"))
-		$favicon_type = "image/jpeg";
-	else if(ubs_one_endswith($favicon, ".png"))
-		$favicon_type = "image/png";
-	else if(ubs_one_endswith($favicon, ".ico"))
-		$favicon_type = "image/x-icon";
+if($ubs_one_favicon != '') { 
+	if(ubs_one_endswith($ubs_one_favicon, ".jpg") || ubs_one_endswith($ubs_one_favicon, "*.jpeg"))
+		$ubs_one_favicon_type = "image/jpeg";
+	else if(ubs_one_endswith($ubs_one_favicon, ".png"))
+		$ubs_one_favicon_type = "image/png";
+	else if(ubs_one_endswith($ubs_one_favicon, ".ico"))
+		$ubs_one_favicon_type = "image/x-icon";
 ?>
-<link rel='shortcut icon' type='<?php echo $favicon_type; ?>' href='<?php echo $favicon; ?>' />
+<link rel='shortcut icon' type='<?php echo $ubs_one_favicon_type; ?>' href='<?php echo $ubs_one_favicon; ?>' />
 <?php } 
 	
 require_once("dynamic-css.php");	
@@ -54,20 +54,20 @@ require_once("dynamic-css.php");
 <?php
 if(ubs_one_get_show_header_footer())
 {
-	$header_type = get_theme_mod('header_type', 'standard');
-	$logo = get_theme_mod('logo');
-  if($logo)
-    $brand = "<img src=\"$logo\" height=\"100%\">";
+	$ubs_one_header_type = get_theme_mod('header_type', 'standard');
+	$ubs_one_logo = get_theme_mod('logo');
+  if($ubs_one_logo)
+    $ubs_one_brand = "<img src=\"$ubs_one_logo\" height=\"100%\">";
   else
-    $brand = get_bloginfo('name', 'display');
+    $ubs_one_brand = get_bloginfo('name', 'display');
 ?>
 
 <div class="ubs-one-header">
-<?php if($header_fixed): ?>
+<?php if($ubs_one_header_fixed): ?>
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-default navbar-fixed-top header-style header-background" id="navbar">
     <div class="ubs-one-header-primary-bg">
-		<div class="container ubs-one-header-primary">
+		<div class="container<?php echo $ubs_one_full_width ? "-fluid" : ""; ?> ubs-one-header-primary">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-primary" aria-expanded="false" aria-controls="navbar">
 					<span class="sr-only">Toggle navigation</span>
@@ -76,7 +76,7 @@ if(ubs_one_get_show_header_footer())
 					<span class="icon-bar"></span>
 				</button>
 				<div class="navbar-brand">
-				  <a class="navbar-brand" href="<?php get_site_url(); ?>"><?php echo $brand; ?></a>
+				  <a class="navbar-brand" href="<?php get_site_url(); ?>"><?php echo $ubs_one_brand; ?></a>
 				</div>
 			</div>
 				<?php 
@@ -98,7 +98,7 @@ if(ubs_one_get_show_header_footer())
 		</div>
     </div>
     <?php if(has_nav_menu('secondary')): ?>
-    <div class="container">
+    <div class="container<?php echo $ubs_one_full_width ? "-fluid" : ""; ?>">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-secondary" aria-expanded="false" aria-controls="navbar">
 					<span class="sr-only">Toggle navigation</span>
@@ -127,7 +127,7 @@ if(ubs_one_get_show_header_footer())
 	<!-- Static navbar -->
 	<nav class="navbar navbar-default navbar-static-top header-style header-background" id="navbar">
     <div class="ubs-one-header-primary-bg">
-		<div class="container ubs-one-header-primary">
+		<div class="container<?php echo $ubs_one_full_width ? "-fluid" : ""; ?> ubs-one-header-primary">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-primary" aria-expanded="false" aria-controls="navbar">
 					<span class="sr-only">Toggle navigation</span>
@@ -136,7 +136,7 @@ if(ubs_one_get_show_header_footer())
 					<span class="icon-bar"></span>
 				</button>
 				<div class="navbar-brand">
-				  <a class="navbar-brand" href="<?php get_site_url(); ?>"><?php echo $brand; ?></a>
+				  <a class="navbar-brand" href="<?php get_site_url(); ?>"><?php echo $ubs_one_brand; ?></a>
 				</div>
 			</div>
 				<?php 
@@ -158,7 +158,7 @@ if(ubs_one_get_show_header_footer())
 		</div>
     </div>
     <?php if(has_nav_menu('secondary')): ?>
-    <div class="container">
+    <div class="container<?php echo $ubs_one_full_width ? "-fluid" : ""; ?>">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-secondary" aria-expanded="false" aria-controls="navbar">
 					<span class="sr-only">Toggle navigation</span>

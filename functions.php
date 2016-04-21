@@ -191,6 +191,7 @@ define('UBS_ONE_HEADER_TYPE_STANDARD', 'standard');
 define('UBS_ONE_HEADER_TYPE_STATIC', 'static');
 define('UBS_ONE_HEADER_TYPE_FIXED', 'fixed');
 
+define('UBS_ONE_FULL_WIDTH', 'full_width');
 define('UBS_ONE_FG_COLOR', 'fg_color');
 define('UBS_ONE_BG_COLOR', 'bg_color');
 define('UBS_ONE_BG_IMAGE', 'bg_image');
@@ -370,6 +371,7 @@ $ubs_one_defaults = array(
   UBS_ONE_SIDEBAR_WIDGET_BORDER => true,
   UBS_ONE_SIDEBAR_WIDGET_BORDER_COLOR => '#d0d0d0',
 	
+  UBS_ONE_FULL_WIDTH => false,
   UBS_ONE_FG_COLOR => '#000000',
   UBS_ONE_BG_COLOR => '#ffffff', 
   UBS_ONE_BG_IMAGE => '',

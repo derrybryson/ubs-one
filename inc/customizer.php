@@ -16,6 +16,7 @@ function ubs_one_customize_register($wp_customize)
 	$wp_customize->get_setting('blogdescription')->transport  = 'refresh';
 	$wp_customize->get_setting('header_textcolor')->transport = 'refresh';
 	
+	$wp_customize->add_setting(UBS_ONE_FULL_WIDTH, array('default' => ubs_one_def(UBS_ONE_FULL_WIDTH), 'transport' => 'refresh'));
 	$wp_customize->add_setting(UBS_ONE_FG_COLOR, array('default' => ubs_one_def(UBS_ONE_FG_COLOR), 'transport' => 'refresh'));
 	$wp_customize->add_setting(UBS_ONE_BG_COLOR, array('default' => ubs_one_def(UBS_ONE_BG_COLOR), 'transport' => 'refresh'));
 	$wp_customize->add_setting(UBS_ONE_BG_IMAGE, array('default' => ubs_one_def(UBS_ONE_BG_IMAGE), 'transport' => 'refresh'));
@@ -166,6 +167,12 @@ function ubs_one_customize_register($wp_customize)
 		"title" => __("Site", "ubs_one"),
 		"priority" => 30,
 	));
+	$wp_customize->add_control(UBS_ONE_FULL_WIDTH, array(
+    'type'        => 'checkbox',
+    'section'     => 'site',
+		'settings' => UBS_ONE_FULL_WIDTH,
+    'label'       => __('Full Width', 'ubs_one'),
+  ));
   $wp_customize->add_control(UBS_ONE_LAYOUT_TYPE, array(		
 		'label'    => __('Layout', 'ubs_one'),
 		'section'  => 'site',

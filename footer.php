@@ -9,12 +9,14 @@
  * @package UBS_One
  */
 
+$ubs_one_full_width = ubs_one_get_theme_mod(UBS_ONE_FULL_WIDTH);
+
 if(ubs_one_get_show_header_footer())
 {
 ?>
 
 <footer class="footer">
-	<div class="container footer">
+	<div class="container<?php echo $ubs_one_full_width ? "-fluid" : ""; ?> footer">
 		<div class="row">
 			<div class="col-sm-3">
 				<?php dynamic_sidebar( 'sidebar-3' ); ?>

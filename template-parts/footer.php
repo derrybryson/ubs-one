@@ -7,12 +7,12 @@
  * @package UBS_One
  */
 
-$layout_type = ubs_one_get_theme_mod(UBS_ONE_LAYOUT_TYPE);
+$ubs_one_layout_type = ubs_one_get_theme_mod(UBS_ONE_LAYOUT_TYPE);
 
 ?>
 </main>
 <?php
-switch($layout_type)
+switch($ubs_one_layout_type)
 {
   case UBS_ONE_LAYOUT_TYPE_1COL :
   ?>
