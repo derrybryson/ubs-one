@@ -133,6 +133,28 @@ $ubs_one_page_title_fg = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_FG);
 $ubs_one_page_title_bg = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_BG);
 $ubs_one_page_title_bg_trans = ubs_one_get_theme_mod(UBS_ONE_PAGE_TITLE_BG_TRANS);
 
+$ubs_one_bbpress_fg = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_FG);
+$ubs_one_bbpress_bg = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_BG);
+$ubs_one_bbpress_link = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_LINK);
+$ubs_one_bbpress_hover = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_HOVER);
+$ubs_one_bbpress_border = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_BORDER);
+$ubs_one_bbpress_title_image = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TITLE_IMAGE);
+$ubs_one_bbpress_title_image_fixed = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TITLE_IMAGE_FIXED);
+$ubs_one_bbpress_title_image_offset = intval(ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TITLE_IMAGE_OFFSET));
+$ubs_one_bbpress_title_image_repeat = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TITLE_IMAGE_REPEAT);
+$ubs_one_bbpress_title_image_size = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TITLE_IMAGE_SIZE);
+$ubs_one_bbpress_title_height = intval(ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TITLE_HEIGHT));
+$ubs_one_bbpress_title_text_size = intval(ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TITLE_TEXT_SIZE));
+$ubs_one_bbpress_title_text_size_mobile = intval(ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TITLE_TEXT_SIZE_MOBILE));
+$ubs_one_bbpress_title_text_family = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TEXT_FAMILY);
+$ubs_one_bbpress_title_text_weight = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TITLE_TEXT_WEIGHT);
+$ubs_one_bbpress_title_text_style = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TITLE_TEXT_STYLE);
+$ubs_one_bbpress_title_text_hpos = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TITLE_TEXT_HPOS);
+$ubs_one_bbpress_title_text_vpos = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TITLE_TEXT_VPOS);
+$ubs_one_bbpress_title_fg = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TITLE_FG);
+$ubs_one_bbpress_title_bg = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TITLE_BG);
+$ubs_one_bbpress_title_bg_trans = ubs_one_get_theme_mod(UBS_ONE_BBPRESS_TITLE_BG_TRANS);
+
 $ubs_one_sidebar_bg = ubs_one_get_theme_mod(UBS_ONE_SIDEBAR_BG);
 $ubs_one_sidebar_link = ubs_one_get_theme_mod(UBS_ONE_SIDEBAR_LINK);
 $ubs_one_sidebar_hover = ubs_one_get_theme_mod(UBS_ONE_SIDEBAR_HOVER);
@@ -739,6 +761,102 @@ body
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
+}
+
+/* === PAGE === */
+
+#bbpress-title-bg
+{
+  <?php if($ubs_one_bbpress_title_image != ''): ?>
+    background-image: url('<?php echo $ubs_one_bbpress_title_image; ?>');
+    background-repeat: <?php echo $ubs_one_bbpress_title_image_repeat; ?>;
+    <?php if($ubs_one_bbpress_title_image_size != ''): ?>
+    background-size: <?php echo $ubs_one_bbpress_title_image_size; ?>;
+    <?php endif; ?>
+    background-position: <?php printf("0px %dpx", $ubs_one_bbpress_title_image_offset); ?>;
+    <?php if($ubs_one_bbpress_title_image_fixed): ?>
+    background-attachment: fixed;
+    <?php else: ?>
+    background-attachment: scroll;
+    <?php endif; ?>
+  <?php else: ?>
+    background-color: <?php echo $ubs_one_bbpress_title_bg_trans ? "transparent" : $ubs_one_bbpress_title_bg; ?>;
+	<?php endif; ?>
+  min-height: <?php echo $ubs_one_bbpress_title_height; ?>px;
+  width: 100%;
+  position: relative;
+  padding: 10px 0 10px 0;
+	margin: 0;
+  display: table;
+}
+	
+#bbpress-title
+{
+  display: table;
+  vertical-align: <?php echo $ubs_one_bbpress_title_text_vpos; ?>;
+  text-align: <?php echo $ubs_one_bbpress_title_text_hpos; ?>;
+  height: 100%;
+  color: <?php echo $ubs_one_bbpress_title_fg; ?>;
+  min-height: <?php echo $ubs_one_bbpress_title_height; ?>px;
+}
+	
+#bbpress-title h1 
+{
+  display: table-cell;
+  vertical-align: <?php echo $ubs_one_bbpress_title_text_vpos; ?>;
+  text-align: <?php echo $ubs_one_bbpress_title_text_hpos; ?>;
+	<?php if($ubs_one_bbpress_title_text_family != ''): ?>
+	font-family: <?php echo $ubs_one_bbpress_title_text_family; ?>;
+	<?php endif; ?>
+  font-size: <?php echo $ubs_one_bbpress_title_text_size; ?>px;
+  font-weight: <?php echo $ubs_one_bbpress_title_text_weight; ?>;
+	font-style: <?php echo $ubs_one_bbpress_title_text_style; ?>;
+  color: <?php echo $ubs_one_bbpress_title_fg; ?>;
+	margin: 0px;
+}
+	
+@media (max-width: 767px) 
+{
+  #page-title h1 
+  {
+    font-size: <?php echo $ubs_one_bbpress_title_text_size_mobile; ?>px;
+  }
+}  
+
+#primary .bbpress
+{
+  padding: 20px;
+	position: relative;
+  color: <?php echo $ubs_one_bbpress_fg; ?>;
+	background-color: <?php echo $ubs_one_bbpress_bg; ?>;
+	margin: 0 0 40px;
+  <?php if($ubs_one_bbpress_border): ?>
+	border: solid 1px <?php echo $ubs_one_bbpress_border_color; ?>;
+  <?php else: ?>
+  border: none;
+  <?php endif; ?>
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+#primary .bbpress header
+{  
+	padding: 20px;
+}
+
+#primary .bbpress-image img {
+	height: auto;
+}
+
+#primary .bbpress a 
+ {
+   color: <?php echo $ubs_one_page_link; ?>;   
+ }
+  
+#primary .bbpress a:hover
+{
+  color: <?php echo $ubs_one_page_hover; ?>;    
 }
 
   /* === WIDGETS === */

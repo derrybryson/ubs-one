@@ -42,6 +42,49 @@ function ubs_one_endswith($haystack, $needle, $case = true)
   return strripos($haystack, $needle, 0) === $expectedPosition;
 }
 
+/**
+ * Checks if the required plugin is active in network or single site.
+ *
+ * @param $plugin
+ *
+ * @return bool
+ */
+function ubs_one_plugin_is_active($plugin) 
+{
+	$network_active = false;
+	if(is_multisite()) 
+  {
+		$plugins = get_site_option('active_sitewide_plugins');
+		if(isset($plugins[$plugin])) 
+    {
+			$network_active = true;
+		}
+	}
+	return in_array($plugin, get_option('active_plugins')) || $network_active;
+}
+
+$ubs_one_woocommerce_active = null;
+function ubs_one_woocommerce_active()
+{
+  global $ubs_one_woocommerce_active;
+  
+  if($ubs_one_woocommerce_active === null)
+    $ubs_one_woocommerce_active = class_exists('WooCommerce') || ubs_one_plugin_is_active('woocommerce/woocommerce.php'); 
+  
+  return $ubs_one_woocommerce_active;
+}
+
+$ubs_one_bbpress_active = null;
+function ubs_one_bbpress_active()
+{
+  global $ubs_one_bbpress_active;
+  
+  if($ubs_one_bbpress_active === null)
+    $ubs_one_bbpress_active = class_exists('bbpress') || ubs_one_plugin_is_active('bbpress/bbpress.php'); 
+  
+  return $ubs_one_bbpress_active;
+}
+
 /** Meta data
  */
 
@@ -178,6 +221,28 @@ define('UBS_ONE_PAGE_TITLE_FG', 'page_title_fg');
 define('UBS_ONE_PAGE_TITLE_BG', 'page_title_bg');
 define('UBS_ONE_PAGE_TITLE_BG_TRAN', 'page_title_bg_trans');
 define('UBS_ONE_PAGE_TITLE_BG_SIZE', 'page_title_bg_size');
+
+define('UBS_ONE_BBPRESS_FG', 'bbpress_fg');
+define('UBS_ONE_BBPRESS_BG', 'bbpress_bg');
+define('UBS_ONE_BBPRESS_LINK', 'bbpress_link');
+define('UBS_ONE_BBPRESS_HOVER', 'bbpress_hover');
+define('UBS_ONE_BBPRESS_TITLE_IMAGE', 'bbpress_title_image');
+define('UBS_ONE_BBPRESS_TITLE_IMAGE_FIXED', 'bbpress_title_image_fixed');
+define('UBS_ONE_BBPRESS_TITLE_IMAGE_OFFSET', 'bbpress_title_image_offset');
+define('UBS_ONE_BBPRESS_TITLE_IMAGE_REPEAT', 'bbpress_title_image_repeat');
+define('UBS_ONE_BBPRESS_TITLE_IMAGE_SIZE', 'bbpress_title_image_size');
+define('UBS_ONE_BBPRESS_TITLE_HEIGHT', 'bbpress_title_height');
+define('UBS_ONE_BBPRESS_TITLE_TEXT_SIZE', 'bbpress_title_font_size');
+define('UBS_ONE_BBPRESS_TITLE_TEXT_SIZE_MOBILE', 'bbpress_title_font_size_mobile');
+define('UBS_ONE_BBPRESS_TITLE_TEXT_FAMILY', 'bbpress_title_text_family');
+define('UBS_ONE_BBPRESS_TITLE_TEXT_WEIGHT', 'bbpress_title_text_weight');
+define('UBS_ONE_BBPRESS_TITLE_TEXT_STYLE', 'bbpress_title_text_style');
+define('UBS_ONE_BBPRESS_TITLE_TEXT_HPOS', 'bbpress_title_text_hpos');
+define('UBS_ONE_BBPRESS_TITLE_TEXT_VPOS', 'bbpress_title_text_vpos');
+define('UBS_ONE_BBPRESS_TITLE_FG', 'bbpress_title_fg');
+define('UBS_ONE_BBPRESS_TITLE_BG', 'bbpress_title_bg');
+define('UBS_ONE_BBPRESS_TITLE_BG_TRAN', 'bbpress_title_bg_trans');
+define('UBS_ONE_BBPRESS_TITLE_BG_SIZE', 'bbpress_title_bg_size');
 
 define('UBS_ONE_SIDEBAR_BG', 'sidebar_bg');
 define('UBS_ONE_SIDEBAR_LINK', 'sidebar_link');
@@ -363,6 +428,29 @@ $ubs_one_defaults = array(
   UBS_ONE_PAGE_TITLE_BG => '#000000',
   UBS_ONE_PAGE_TITLE_BG_TRANS => false,
 	
+  UBS_ONE_BBPRESS_FG => '#000000',
+  UBS_ONE_BBPRESS_BG => '#ffffff',
+  UBS_ONE_BBPRESS_LINK => '#cdbfe3',
+  UBS_ONE_BBPRESS_HOVER => '#6f5499',
+  UBS_ONE_BBPRESS_BORDER => true,
+  UBS_ONE_BBPRESS_BORDER_COLOR => '#d0d0d0',
+  UBS_ONE_BBPRESS_TITLE_IMAGE => '',
+  UBS_ONE_BBPRESS_TITLE_IMAGE_FIXED => true,
+  UBS_ONE_BBPRESS_TITLE_IMAGE_OFFSET => 0,
+  UBS_ONE_BBPRESS_TITLE_IMAGE_REPEAT => UBS_ONE_REPEAT_Y,
+  UBS_ONE_BBPRESS_TITLE_IMAGE_SIZE => UBS_ONE_BG_SIZE_COVER,
+  UBS_ONE_BBPRESS_TITLE_HEIGHT => '0',
+  UBS_ONE_BBPRESS_TITLE_TEXT_SIZE => 50,
+  UBS_ONE_BBPRESS_TITLE_TEXT_SIZE_MOBILE => 25,
+	UBS_ONE_BBPRESS_TITLE_TEXT_FAMILY => 'sans-serif',
+	UBS_ONE_BBPRESS_TITLE_TEXT_WEIGHT => 'bold',
+	UBS_ONE_BBPRESS_TITLE_TEXT_STYLE => 'normal',
+  UBS_ONE_BBPRESS_TITLE_TEXT_HPOS => UBS_ONE_HPOS_LEFT,
+  UBS_ONE_BBPRESS_TITLE_TEXT_VPOS => UBS_ONE_VPOS_MIDDLE,
+  UBS_ONE_BBPRESS_TITLE_FG => '#ffffff',
+  UBS_ONE_BBPRESS_TITLE_BG => '#000000',
+  UBS_ONE_BBPRESS_TITLE_BG_TRANS => false,
+	
   UBS_ONE_SIDEBAR_BG => '#ffffff',
   UBS_ONE_SIDEBAR_LINK => '#cdbfe3',
   UBS_ONE_SIDEBAR_HOVER => '#6f5499',
@@ -543,7 +631,7 @@ add_action("admin_menu", "ubs_one_menu_item");
 function ubs_one_widgets_init() {
 	register_sidebar(array(
 		'name'          => esc_html__( 'Left Sidebar', 'ubs-one' ),
-		'id'            => 'sidebar-1',
+		'id'            => 'left-sidebar',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -552,7 +640,7 @@ function ubs_one_widgets_init() {
 	));
 	register_sidebar(array(
 		'name'          => esc_html__( 'Right Sidebar', 'ubs-one' ),
-		'id'            => 'sidebar-2',
+		'id'            => 'right-sidebar',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -561,7 +649,7 @@ function ubs_one_widgets_init() {
 	));
 	register_sidebar(array(
 		'name'          => esc_html__( 'Footer 1', 'ubs-one' ),
-		'id'            => 'sidebar-3',
+		'id'            => 'footer-1',
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
@@ -570,7 +658,7 @@ function ubs_one_widgets_init() {
 	));
 	register_sidebar(array(
 		'name'          => esc_html__( 'Footer 2', 'ubs-one' ),
-		'id'            => 'sidebar-4',
+		'id'            => 'footer-2',
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
@@ -579,7 +667,7 @@ function ubs_one_widgets_init() {
 	));
 	register_sidebar(array(
 		'name'          => esc_html__( 'Footer 3', 'ubs-one' ),
-		'id'            => 'sidebar-5',
+		'id'            => 'footer-3',
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
@@ -588,7 +676,7 @@ function ubs_one_widgets_init() {
 	));
 	register_sidebar(array(
 		'name'          => esc_html__( 'Footer 4', 'ubs-one' ),
-		'id'            => 'sidebar-6',
+		'id'            => 'footer-4',
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
@@ -664,3 +752,54 @@ require get_template_directory() . '/inc/meta.php';
  */
 require get_template_directory() . '/inc/shortcodes.php';
 
+function ubs_one_excerpt($meta = true, $thumbnail = true, $excerpt = true, $edit = true, $height = 0)
+{
+  global $post;
+  $metadata = get_post_meta($post->ID);
+  $raw_content = isset($metadata[UBS_ONE_META_RAW_CONTENT]) ? $metadata[UBS_ONE_META_RAW_CONTENT][0] == "Y" : false;
+?>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?><?php echo $height > 0 ? "style=\"height: " . $height . "px;\"" : ""; ?>>
+  <?php if($meta): ?>
+	<header class="entry-header">
+		<?php if ( 'post' == get_post_type() ) : ?>
+		
+		<div class="post-details">
+			<i class="fa fa-user"></i> <?php the_author(); ?>
+			<i class="fa fa-clock-o"></i> <time><?php the_time(get_option('date_format' )); ?></time>
+			
+			<i class="fa fa-folder"></i> <?php the_category(', ') ?>
+			<i class="fa fa-tags"></i> <?php the_tags(); ?>
+			<i class="fa fa-comments"></i><a href="<?php comments_link(); ?>"> <?php comments_number( 0, 1, '%'); ?></a>
+			
+			<?php if($edit) edit_post_link('Edit', '<i class="fa fa-pencil"></i> ', ''); ?>
+      
+		</div><!-- post-details -->
+    <?php endif; ?>
+		
+	</header><!-- .entry-header -->
+  <?php endif; ?>
+
+	<?php if($thumbnail && has_post_thumbnail()) { // check for feature image ?> 
+	<div class="post-image">
+		<?php the_post_thumbnail(); ?>
+	</div><!-- post-image -->
+	<?php } ?>
+	
+  <?php if($excerpt): ?>
+	<div class="post-body">
+		<?php the_excerpt(); ?>
+	</div><!-- post-body -->
+  <?php endif; ?>
+</article><!-- #post-## -->
+<?php
+}
+
+/**
+ * Replaces the excerpt "more" text by a link.
+ */
+function new_excerpt_more($more) 
+{
+  global $post;
+	return '... <a class="moretag" href="'. get_permalink($post->ID) . '"> continue reading &raquo;</a>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');

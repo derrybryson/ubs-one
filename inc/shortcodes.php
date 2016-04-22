@@ -706,10 +706,24 @@ function ubs_one_blog_grid_shortcode_handler($atts, $content = null)
     'offset' => 0,
     'orderby' => 'date',
     'order' => 'DESC',
-    'height' => 600,
+    'height' => 0,
+    'meta' => 1,
+    'thumbnail' => 1,
+    'edit' => 0,
+    'excerpt' => 1,
   ), $atts);
   
-  $width = 100 / intval($a['columns']);
+  $meta = intval($a['meta']) == 1;
+  $thumbnail = intval($a['thumbnail']) == 1;
+  $edit = intval($a['edit']) == 1;
+  $excerpt = intval($a['excerpt']) == 1;
+  
+  $columns = $a['columns'];
+  if($columns < 1)
+    $columns = 1;
+  else if($columns > 4)
+    $columns = 4;
+  $width = 12 / intval($columns);
   
   $args = array(
     'posts_per_page' => intval($a['count']),
@@ -723,20 +737,29 @@ function ubs_one_blog_grid_shortcode_handler($atts, $content = null)
   $posts = get_posts($args);
   $postnum = 0;
   global $post;
-  $ret = "<div class=\"blog-grid\">";
+//  $ret = "<div class=\"blog-grid\">";
   foreach($posts as $post)
   {
-    $ret .= "<div class=\"blog-grid-post\" style=\"width: " . $width . "%; height: " . intval($a['height']) . "px;\">";
+    if($postnum % $columns == 0)
+    {
+      if($postnum > 0)
+        $ret .= "</div>";
+      $ret .= "<div class=\"row\" style=\"margin: 0;\">";
+    }
+    $ret .= "<div class=\"col-sm-" . $width . " blog-grid-post\">";
     setup_postdata($post);
     ob_start();
-  	the_title(sprintf('<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h3>');
-    get_template_part('template-parts/excerpt', get_post_format());
+    the_title(sprintf('<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h3>');
+    ubs_one_excerpt($meta, $thumbnail, $excerpt, $edit, intval($a['height']));
     $ret .= ob_get_contents();
     ob_end_clean();
     $ret .= "</div>";
+    $postnum++;
   }
+  if($postnum > 0)
+    $ret .= "</div>";
   wp_reset_postdata();
-  $ret .= "</div>";
+//  $ret .= "</div>";
   return $ret;
 }
 ubs_one_add_shortcode('blog-grid', 'ubs_one_blog_grid_shortcode_handler');

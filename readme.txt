@@ -9,11 +9,11 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A starter theme called UBS One.
+A Bootstrap 3 based theme called UBS One.
 
 == Description ==
 
-Hi. I'm a starter theme called UBS One, or underscores, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
+A very customizable theme based on Bootstrap 3.
 
 == Installation ==
 	
@@ -24,13 +24,6 @@ Hi. I'm a starter theme called UBS One, or underscores, if you like. I'm a theme
 == Frequently Asked Questions ==
 
 = Does this theme support any plugins? =
-
-UBS One includes support for Infinite Scroll in Jetpack.
-
-== Changelog ==
-
-= 1.0 - May 12 2015 =
-* Initial release
 
 == Credits ==
 

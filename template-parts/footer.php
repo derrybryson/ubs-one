@@ -23,7 +23,7 @@ switch($ubs_one_layout_type)
   ?>
     <div class="col-sm-3 col-sm-pull-9 ">
       <aside id="secondary" class="widget-area" role="complementary">
-        <?php dynamic_sidebar( 'sidebar-1' ); ?>
+        <?php dynamic_sidebar('left-sidebar'); ?>
       </aside><!-- #secondary -->
     </div><!-- sidebar -->
   <?php
@@ -33,7 +33,7 @@ switch($ubs_one_layout_type)
   ?>
     <div class="col-sm-3">
       <aside id="secondary" class="widget-area" role="complementary">
-        <?php dynamic_sidebar( 'sidebar-2' ); ?>
+        <?php dynamic_sidebar('right-sidebar'); ?>
       </aside><!-- #secondary -->
     </div><!-- sidebar -->
   <?php
@@ -43,12 +43,12 @@ switch($ubs_one_layout_type)
   ?>
     <div class="col-sm-3 col-sm-pull-6">
       <aside id="secondary" class="widget-area" role="complementary">
-        <?php dynamic_sidebar( 'sidebar-1' ); ?>
+        <?php dynamic_sidebar('left-sidebar'); ?>
       </aside><!-- #secondary -->
     </div><!-- sidebar -->
     <div class="col-sm-3">
       <aside id="secondary" class="widget-area" role="complementary">
-        <?php dynamic_sidebar( 'sidebar-2' ); ?>
+        <?php dynamic_sidebar('right-sidebar'); ?>
       </aside><!-- #secondary -->
     </div><!-- sidebar -->
   <?php

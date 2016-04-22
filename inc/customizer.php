@@ -12,7 +12,9 @@
  */
 function ubs_one_customize_register($wp_customize) 
 {
-	$wp_customize->get_setting('blogname')->transport         = 'refresh';
+  error_log("bbpress is " . (ubs_one_bbpress_active() ? "active" : "not active"));
+  
+  $wp_customize->get_setting('blogname')->transport         = 'refresh';
 	$wp_customize->get_setting('blogdescription')->transport  = 'refresh';
 	$wp_customize->get_setting('header_textcolor')->transport = 'refresh';
 	
@@ -154,7 +156,33 @@ function ubs_one_customize_register($wp_customize)
   $wp_customize->add_setting(UBS_ONE_PAGE_TITLE_BG, array('default' => ubs_one_def(UBS_ONE_PAGE_TITLE_BG), 'transport' => 'refresh'));
   $wp_customize->add_setting(UBS_ONE_PAGE_TITLE_BG_TRANS, array('default' => ubs_one_def(UBS_ONE_PAGE_TITLE_BG_TRANS), 'transport' => 'refresh'));
 
-	$wp_customize->add_setting(UBS_ONE_SIDEBAR_BG, array('default' => ubs_one_def(UBS_ONE_SIDEBAR_BG), 'transport' => 'refresh'));
+  if(ubs_one_bbpress_active())
+  {
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_FG, array('default' => ubs_one_def(UBS_ONE_BBPRESS_FG), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_BG, array('default' => ubs_one_def(UBS_ONE_BBPRESS_BG), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_LINK, array('default' => ubs_one_def(UBS_ONE_BBPRESS_LINK), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_HOVER, array('default' => ubs_one_def(UBS_ONE_BBPRESS_HOVER), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_BORDER, array('default' => ubs_one_def(UBS_ONE_BBPRESS_BORDER), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_BORDER_COLOR, array('default' => ubs_one_def(UBS_ONE_BBPRESS_BORDER_COLOR), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_IMAGE, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_IMAGE), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_IMAGE_FIXED, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_IMAGE_FIXED), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_IMAGE_OFFSET, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_IMAGE_OFFSET), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_IMAGE_REPEAT, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_IMAGE_REPEAT), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_IMAGE_SIZE, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_IMAGE_SIZE), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_HEIGHT, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_HEIGHT), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_TEXT_SIZE, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_TEXT_SIZE), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_TEXT_SIZE_MOBILE, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_TEXT_SIZE_MOBILE), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_TEXT_FAMILY, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_TEXT_FAMILY), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_TEXT_WEIGHT, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_TEXT_WEIGHT), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_TEXT_STYLE, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_TEXT_STYLE), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_TEXT_HPOS, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_TEXT_HPOS), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_TEXT_VPOS, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_TEXT_VPOS), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_FG, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_FG), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_BG, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_BG), 'transport' => 'refresh'));
+    $wp_customize->add_setting(UBS_ONE_BBPRESS_TITLE_BG_TRANS, array('default' => ubs_one_def(UBS_ONE_BBPRESS_TITLE_BG_TRANS), 'transport' => 'refresh'));
+  }
+
+  $wp_customize->add_setting(UBS_ONE_SIDEBAR_BG, array('default' => ubs_one_def(UBS_ONE_SIDEBAR_BG), 'transport' => 'refresh'));
   $wp_customize->add_setting(UBS_ONE_SIDEBAR_LINK, array('default' => ubs_one_def(UBS_ONE_SIDEBAR_LINK), 'transport' => 'refresh'));
   $wp_customize->add_setting(UBS_ONE_SIDEBAR_HOVER, array('default' => ubs_one_def(UBS_ONE_SIDEBAR_HOVER), 'transport' => 'refresh'));
   $wp_customize->add_setting(UBS_ONE_SIDEBAR_WIDGET_FG, array('default' => ubs_one_def(UBS_ONE_SIDEBAR_WIDGET_FG), 'transport' => 'refresh'));
@@ -986,6 +1014,146 @@ function ubs_one_customize_register($wp_customize)
 		'settings' => UBS_ONE_PAGE_TITLE_BG_TRANS,
     'label'       => __('Title Background Transparent', 'ubs_one'),
   ));
+
+	// bbpress settings
+  if(ubs_one_bbpress_active())
+  {
+    $wp_customize->add_section("bbpress", array(
+      "title" => __("BBPress", "ubs_one"),
+      "priority" => 30,
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, UBS_ONE_BBPRESS_FG, array(
+          'label'    => __( 'Text Color', 'ubs_one' ),
+          'section'  => 'bbpress',
+          'settings' => UBS_ONE_BBPRESS_FG,
+    )));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, UBS_ONE_BBPRESS_BG, array(
+          'label'    => __( 'Background Color', 'ubs_one' ),
+          'section'  => 'bbpress',
+          'settings' => UBS_ONE_BBPRESS_BG,
+    )));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, UBS_ONE_BBPRESS_LINK, array(
+          'label'    => __( 'Link Color', 'ubs_one' ),
+          'section'  => 'bbpress',
+          'settings' => UBS_ONE_BBPRESS_LINK,
+    )));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, UBS_ONE_BBPRESS_HOVER, array(
+          'label'    => __( 'Link Hover Color', 'ubs_one' ),
+          'section'  => 'bbpress',
+          'settings' => UBS_ONE_BBPRESS_HOVER,
+    )));
+    $wp_customize->add_control(UBS_ONE_BBPRESS_BORDER, array(
+      'type'        => 'checkbox',
+      'section'     => 'bbpress',
+      'settings' => UBS_ONE_BBPRESS_BORDER,
+      'label'       => __('Border', 'ubs_one'),
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, UBS_ONE_BBPRESS_BORDER_COLOR, array(
+          'label'    => __( 'Border Color', 'ubs_one' ),
+          'section'  => 'bbpress',
+          'settings' => UBS_ONE_BBPRESS_BORDER_COLOR,
+    )));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, UBS_ONE_BBPRESS_TITLE_IMAGE, array(
+      'label'      => __( 'Title Background Image', 'ubs_one' ),
+      'section'    => 'bbpress',
+      'settings'   => UBS_ONE_BBPRESS_TITLE_IMAGE,
+      'description' => __('Rec Min Width 1920', 'ubs_one'),
+    )));
+    $wp_customize->add_control(UBS_ONE_BBPRESS_TITLE_IMAGE_FIXED, array(
+      'type'        => 'checkbox',
+      'section'     => 'bbpress',
+      'settings' => UBS_ONE_BBPRESS_TITLE_IMAGE_FIXED,
+      'label'       => __('Background Image Fixed', 'ubs_one'),
+    ));
+    $wp_customize->add_control(UBS_ONE_BBPRESS_TITLE_IMAGE_OFFSET, array(
+      'type'        => 'number',
+      'section'     => 'bbpress',
+      'settings' => UBS_ONE_BBPRESS_TITLE_IMAGE_OFFSET,
+      'label'       => 'Background Image Offset',
+    ));
+    $wp_customize->add_control(UBS_ONE_BBPRESS_TITLE_IMAGE_REPEAT, array(		
+      'label'    => __('Background Image Repeat', 'ubs_one'),
+      'section'  => 'bbpress',
+      'settings' => UBS_ONE_BBPRESS_TITLE_IMAGE_REPEAT,
+      'type'     => 'select',
+      'choices'  => ubs_one_choices(UBS_ONE_REPEAT),
+    ));
+    $wp_customize->add_control(UBS_ONE_BBPRESS_TITLE_IMAGE_SIZE, array(		
+      'label'    => __('Background Image Size', 'ubs_one'),
+      'section'  => 'bbpress',
+      'settings' => UBS_ONE_BBPRESS_TITLE_IMAGE_SIZE,
+      'type'     => 'select',
+      'choices'  => ubs_one_choices(UBS_ONE_BG_SIZE),
+    ));
+    $wp_customize->add_control(UBS_ONE_BBPRESS_TITLE_HEIGHT, array(
+      'type'        => 'number',
+      'section'     => 'bbpress',
+      'settings' => UBS_ONE_BBPRESS_TITLE_HEIGHT,
+      'label'       => 'Title Minimum Height',
+    ));
+    $wp_customize->add_control(UBS_ONE_BBPRESS_TITLE_TEXT_SIZE, array(
+      'type'        => 'number',
+      'section'     => 'bbpress',
+      'settings' => UBS_ONE_BBPRESS_TITLE_TEXT_SIZE,
+      'label'       => 'Title Text Size',
+    ));
+    $wp_customize->add_control(UBS_ONE_BBPRESS_TITLE_TEXT_SIZE_MOBILE, array(
+      'type'        => 'number',
+      'section'     => 'bbpress',
+      'settings' => UBS_ONE_BBPRESS_TITLE_TEXT_SIZE_MOBILE,
+      'label'       => 'Title Mobile Text Size',
+    ));
+    $wp_customize->add_control(UBS_ONE_BBPRESS_TITLE_TEXT_FAMILY, array(
+      'type'        => 'text',
+      'section'     => 'bbpress',
+      'settings' => UBS_ONE_BBPRESS_TITLE_TEXT_FAMILY,
+      'label'       => 'Title Text Family',
+    ));
+    $wp_customize->add_control(UBS_ONE_BBPRESS_TITLE_TEXT_WEIGHT, array(		
+      'label'    => __('Title Text Weight', 'ubs_one'),
+      'section'  => 'bbpress',
+      'settings' => UBS_ONE_BBPRESS_TITLE_TEXT_WEIGHT,
+      'type'     => 'select',
+      'choices'  => ubs_one_choices(UBS_ONE_TEXT_WEIGHT),
+    ));
+    $wp_customize->add_control(UBS_ONE_BBPRESS_TITLE_TEXT_STYLE, array(
+      'label'    => __('Title Text Style', 'ubs_one'),
+      'section'  => 'bbpress',
+      'settings' => UBS_ONE_BBPRESS_TITLE_TEXT_STYLE,
+      'type'     => 'select',
+      'choices'  => ubs_one_choices(UBS_ONE_TEXT_STYLE),
+    ));
+    $wp_customize->add_control(UBS_ONE_BBPRESS_TITLE_TEXT_HPOS, array(
+      'label'    => __('Title Text Horizontal Position', 'ubs_one'),
+      'section'  => 'bbpress',
+      'settings' => UBS_ONE_BBPRESS_TITLE_TEXT_HPOS,
+      'type'     => 'select',
+      'choices'  => ubs_one_choices(UBS_ONE_HPOS),
+    ));
+    $wp_customize->add_control(UBS_ONE_BBPRESS_TITLE_TEXT_VPOS, array(
+      'label'    => __('Title Text Vertical Position', 'ubs_one'),
+      'section'  => 'bbpress',
+      'settings' => UBS_ONE_BBPRESS_TITLE_TEXT_VPOS,
+      'type'     => 'select',
+      'choices'  => ubs_one_choices(UBS_ONE_VPOS),
+    ));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, UBS_ONE_BBPRESS_TITLE_FG, array(
+          'label'    => __('Title Text Color', 'ubs_one'),
+          'section'  => 'bbpress',
+          'settings' => UBS_ONE_BBPRESS_TITLE_FG,
+    )));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, UBS_ONE_BBPRESS_TITLE_BG, array(
+          'label'    => __('Title Background Color', 'ubs_one'),
+          'section'  => 'bbpress',
+          'settings' => UBS_ONE_BBPRESS_TITLE_BG,
+    )));
+    $wp_customize->add_control(UBS_ONE_BBPRESS_TITLE_BG_TRANS, array(
+      'type'        => 'checkbox',
+      'section'     => 'bbpress',
+      'settings' => UBS_ONE_BBPRESS_TITLE_BG_TRANS,
+      'label'       => __('Title Background Transparent', 'ubs_one'),
+    ));
+  }
 
 	// Sidebar settings
 	$wp_customize->add_section("sidebar", array(
