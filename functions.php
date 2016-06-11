@@ -605,7 +605,7 @@ function ubs_one_settings_page()
 {
 	?>
 	    <div class="wrap">
-	    <h1>Theme Options</h1>
+	    <h1>UBS One</h1>
 	    <form method="post" action="options.php">
 	        <?php
 	            settings_fields("section");
@@ -619,7 +619,7 @@ function ubs_one_settings_page()
 
 function ubs_one_menu_item()
 {
-  add_theme_page("Theme Options", "Theme Options", "manage_options", "ubs-one-options", "ubs_one_settings_page");
+  add_theme_page("UBS One", "UBS One", "manage_options", "ubs-one-options", "ubs_one_settings_page");
 }
 add_action("admin_menu", "ubs_one_menu_item");
 

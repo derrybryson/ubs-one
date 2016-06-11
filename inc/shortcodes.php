@@ -124,16 +124,34 @@ function ubs_one_generic_shortcode_handler($atts, $content = null, $tag = null)
   {
     $tag = substr($tag, strlen($ubs_one_shortcode_prefix) + 1);
     $defs = ubs_one_basic_defs();
+    $defs += ubs_one_data_defs();
     $a = shortcode_atts($defs, $atts);
     
     $class = ubs_one_tag_attr('class', $a['class']);
     $style = ubs_one_tag_attr('style', $a['style']);
     $id = ubs_one_tag_attr('id', $a['id']);
+    $data = ubs_one_data_attr($a);
 
-    return "<$tag$class$style$id>" . do_shortcode($content) . "</$tag>";
+    return "<$tag$class$style$id$data>" . do_shortcode($content) . "</$tag>";
   }
   return '';
 }
+
+ubs_one_add_shortcode('p', 'ubs_one_generic_shortcode_handler');
+ubs_one_add_shortcode('div', 'ubs_one_generic_shortcode_handler');
+ubs_one_add_shortcode('span', 'ubs_one_generic_shortcode_handler');
+ubs_one_add_shortcode('mark', 'ubs_one_generic_shortcode_handler');
+ubs_one_add_shortcode('del', 'ubs_one_generic_shortcode_handler');
+
+ubs_one_add_shortcode('h1', 'ubs_one_generic_shortcode_handler');
+ubs_one_add_shortcode('h2', 'ubs_one_generic_shortcode_handler');
+ubs_one_add_shortcode('h3', 'ubs_one_generic_shortcode_handler');
+ubs_one_add_shortcode('h4', 'ubs_one_generic_shortcode_handler');
+ubs_one_add_shortcode('h5', 'ubs_one_generic_shortcode_handler');
+
+ubs_one_add_shortcode('ol', 'ubs_one_generic_shortcode_handler');
+ubs_one_add_shortcode('ul', 'ubs_one_generic_shortcode_handler');
+ubs_one_add_shortcode('li', 'ubs_one_generic_shortcode_handler');
 
 function ubs_one_glyphicon_shortcode_handler($atts, $content = null) 
 {
@@ -245,16 +263,6 @@ function ubs_one_jumbotron_shortcode_handler($atts, $content = null)
 }
 ubs_one_add_shortcode('jumbotron', 'ubs_one_jumbotron_shortcode_handler');
 
-ubs_one_add_shortcode('p', 'ubs_one_generic_shortcode_handler');
-ubs_one_add_shortcode('mark', 'ubs_one_generic_shortcode_handler');
-ubs_one_add_shortcode('del', 'ubs_one_generic_shortcode_handler');
-
-ubs_one_add_shortcode('h1', 'ubs_one_generic_shortcode_handler');
-ubs_one_add_shortcode('h2', 'ubs_one_generic_shortcode_handler');
-ubs_one_add_shortcode('h3', 'ubs_one_generic_shortcode_handler');
-ubs_one_add_shortcode('h4', 'ubs_one_generic_shortcode_handler');
-ubs_one_add_shortcode('h5', 'ubs_one_generic_shortcode_handler');
-
 function ubs_one_table_shortcode_handler($atts, $content = null)
 {
   $defs = ubs_one_basic_defs();
@@ -312,7 +320,7 @@ function ubs_one_a_button_shortcode_handler($atts, $content = null, $tag = '')
   $data = ubs_one_data_attr($a);
   $title = ubs_one_tag_attr('title', $a['title']);
   
-  return "<$tag $class$style$id$href$onclick$data_toggle$data_content$data_trigger$data_placement$title>" . do_shortcode($content) . "</$tag>";
+  return "<$tag $class$style$id$href$onclick$data_toggle$data$title>" . do_shortcode($content) . "</$tag>";
 }
 ubs_one_add_shortcode('a', 'ubs_one_a_button_shortcode_handler');
 ubs_one_add_shortcode('button', 'ubs_one_a_button_shortcode_handler');
@@ -744,7 +752,7 @@ function ubs_one_blog_grid_shortcode_handler($atts, $content = null)
     {
       if($postnum > 0)
         $ret .= "</div>";
-      $ret .= "<div class=\"row\" style=\"margin: 0;\">";
+      $ret .= "<div class=\"row ubs-one-margin-0\">";
     }
     $ret .= "<div class=\"col-sm-" . $width . " blog-grid-post\">";
     setup_postdata($post);

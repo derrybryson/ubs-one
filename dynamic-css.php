@@ -1039,6 +1039,29 @@ body
   padding: 0px 10px 0px 10px;  
 }
   
+/* === MISC === */
+
+<?php
+function ubs_one_gen_misc($attr, $mod, $start, $end, $inc)
+{
+  for($i = $start; $i <= $end; $i += $inc)
+    printf(".ubs-one-$attr$mod-%d { $attr$mod: %dpx; }\n", $i, $i);
+  print("\n");
+}
+  
+ubs_one_gen_misc('margin', '', 0, 20, 5);
+ubs_one_gen_misc('margin', '-left', 0, 20, 5);
+ubs_one_gen_misc('margin', '-right', 0, 20, 5);
+ubs_one_gen_misc('margin', '-top', 0, 20, 5);
+ubs_one_gen_misc('margin', '-bottom', 0, 20, 5);
+  
+ubs_one_gen_misc('padding', '', 0, 20, 5);
+ubs_one_gen_misc('padding', '-left', 0, 20, 5);
+ubs_one_gen_misc('padding', '-right', 0, 20, 5);
+ubs_one_gen_misc('padding', '-top', 0, 20, 5);
+ubs_one_gen_misc('padding', '-bottom', 0, 20, 5);
+?>
+  
 </style>
 <?php if($ubs_one_custom_css != ''): ?>
 <style><?php echo $ubs_one_custom_css; ?></style>
