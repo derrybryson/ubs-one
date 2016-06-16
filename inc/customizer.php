@@ -27,6 +27,8 @@ function ubs_one_customize_register($wp_customize)
 	$wp_customize->add_setting(UBS_ONE_TEXT_SIZE, array('default' => ubs_one_def(UBS_ONE_TEXT_SIZE), 'transport' => 'refresh'));
 	$wp_customize->add_setting(UBS_ONE_FAVICON, array('default' => ubs_one_def(UBS_ONE_FAVICON), 'transport' => 'refresh'));
 	$wp_customize->add_setting(UBS_ONE_LAYOUT_TYPE, array('default' => ubs_one_def(UBS_ONE_LAYOUT_TYPE), 'transport' => 'refresh'));
+  $wp_customize->add_setting(UBS_ONE_CUSTOM_HEADER, array('default' => ubs_one_def(UBS_ONE_CUSTOM_HEADER), 'transport' => 'refresh'));
+  $wp_customize->add_setting(UBS_ONE_CUSTOM_FOOTER, array('default' => ubs_one_def(UBS_ONE_CUSTOM_FOOTER), 'transport' => 'refresh'));
   $wp_customize->add_setting(UBS_ONE_CUSTOM_CSS, array('default' => ubs_one_def(UBS_ONE_CUSTOM_CSS), 'transport' => 'refresh'));
 
 	$wp_customize->add_setting(UBS_ONE_HEADER_FIXED, array('default' => ubs_one_def(UBS_ONE_HEADER_FIXED), 'transport' => 'refresh'));
@@ -246,6 +248,18 @@ function ubs_one_customize_register($wp_customize)
     'section'    => 'site',
     'settings'   => UBS_ONE_FAVICON,
   )));
+	$wp_customize->add_control(UBS_ONE_CUSTOM_HEADER, array(
+    'type'        => 'textarea',
+    'section'     => 'site',
+		'settings' => UBS_ONE_CUSTOM_HEADER,
+    'label'       => 'Custom Header',
+  ));
+	$wp_customize->add_control(UBS_ONE_CUSTOM_FOOTER, array(
+    'type'        => 'textarea',
+    'section'     => 'site',
+		'settings' => UBS_ONE_CUSTOM_FOOTER,
+    'label'       => 'Custom Footer',
+  ));
 	$wp_customize->add_control(UBS_ONE_CUSTOM_CSS, array(
     'type'        => 'textarea',
     'section'     => 'site',

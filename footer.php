@@ -42,6 +42,7 @@ if(ubs_one_get_show_header_footer())
 <?php 
 } 
 wp_footer(); 
+echo ubs_one_get_theme_mod(UBS_ONE_CUSTOM_FOOTER);
 ?>
 <script>
 jQuery(function($) 

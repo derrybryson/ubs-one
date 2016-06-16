@@ -254,7 +254,7 @@ body
 
 .ubs-one-header div.navbar-brand
 {
-/*  min-height: <?php echo $ubs_one_header_height; ?>px;*/
+  height: <?php echo $ubs_one_header_height - 30; ?>px;
   display: table-cell;
   vertical-align: middle;
   padding: 0px;
@@ -264,6 +264,7 @@ body
 .ubs-one-header a.navbar-brand,
 .ubs-one-header a.navbar-brand:hover
 {
+  height: <?php echo $ubs_one_header_height; ?>px;
   color: <?php echo $ubs_one_header_fg; ?>;
   font-size: <?php echo $ubs_one_header_logo_text_size; ?>px;
 	font-weight: <?php echo $ubs_one_header_logo_text_weight; ?>;

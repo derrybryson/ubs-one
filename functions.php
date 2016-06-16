@@ -264,6 +264,8 @@ define('UBS_ONE_BG_FIXED', 'bg_fixed');
 define('UBS_ONE_TEXT_FAMILY', 'font_family');
 define('UBS_ONE_TEXT_SIZE', 'font_size');
 define('UBS_ONE_FAVICON', 'favicon');
+define('UBS_ONE_CUSTOM_HEADER', 'custom_header');
+define('UBS_ONE_CUSTOM_FOOTER', 'custom_footer');
 define('UBS_ONE_CUSTOM_CSS', 'custom_css');
 
 define('UBS_ONE_LAYOUT_TYPE', 'layout_type');
@@ -469,6 +471,8 @@ $ubs_one_defaults = array(
 	UBS_ONE_FAVICON => '',
 	UBS_ONE_LAYOUT_TYPE => UBS_ONE_LAYOUT_TYPE_2COLRIGHT,
 	UBS_ONE_CUSTOM_CSS => '',
+  UBS_ONE_CUSTOM_HEADER => '',
+  UBS_ONE_CUSTOM_FOOTER => '',
 );
 
 /** Theme setting choices

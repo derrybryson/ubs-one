@@ -27,7 +27,9 @@ require_once('inc/wp_bootstrap_navwalker.php');
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 	
-<?php wp_head();
+<?php 
+echo ubs_one_get_theme_mod(UBS_ONE_CUSTOM_HEADER);
+wp_head();
 	
 $ubs_one_favicon = ubs_one_get_theme_mod(UBS_ONE_FAVICON);
 	
@@ -76,7 +78,7 @@ if(ubs_one_get_show_header_footer())
 					<span class="icon-bar"></span>
 				</button>
 				<div class="navbar-brand">
-				  <a class="navbar-brand" href="<?php get_site_url(); ?>"><?php echo $ubs_one_brand; ?></a>
+				  <a class="navbar-brand" href="<?php echo get_site_url(); ?>"><?php echo $ubs_one_brand; ?></a>
 				</div>
 			</div>
 				<?php 
@@ -136,7 +138,7 @@ if(ubs_one_get_show_header_footer())
 					<span class="icon-bar"></span>
 				</button>
 				<div class="navbar-brand">
-				  <a class="navbar-brand" href="<?php get_site_url(); ?>"><?php echo $ubs_one_brand; ?></a>
+				  <a class="navbar-brand" href="<?php echo get_site_url(); ?>"><?php echo $ubs_one_brand; ?></a>
 				</div>
 			</div>
 				<?php 
